@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import { LayoutContainer } from './modules/components/layout-container';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      New project
+    <div >
+      <LayoutContainer />
     </div>
   );
 };
