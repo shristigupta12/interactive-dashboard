@@ -13,9 +13,11 @@ export const LayoutContainer = () => {
                 <LeftSidebarProvider>
                     <RightSidebarProvider>
                         <LeftSidebar />
-                        <div className="flex-1">
+                        <div className="flex-1 h-screen overflow-hidden">
                             <Navbar />
-                            <Main />
+                            <div className="h-full overflow-y-auto">
+                                <Main />
+                            </div>
                         </div>
                         <RightSidebar />
                     </RightSidebarProvider>
