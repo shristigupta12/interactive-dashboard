@@ -12,8 +12,8 @@ export const Navbar = () => {
     return (
         <nav className="h-[68px] border-b border-black/10 py-5 px-7 flex items-center justify-between">
             <div className="flex items-center gap-4 text-md">
-                <Sidebar size={22} weight="duotone" className="cursor-pointer text-neutral-800" onClick={toggleLeftSidebar} />
-                <Star size={22} weight="duotone" className="cursor-pointer" />
+                <Sidebar size={22} weight="duotone" className="cursor-pointer text-neutral-700" onClick={toggleLeftSidebar} />
+                <Star size={22} weight="duotone" className="cursor-pointer text-neutral-700" />
                 <p className="text-neutral-500">Dashboards</p>
                 <p className="text-neutral-500">/</p>
                 <p>Default</p>
@@ -21,13 +21,13 @@ export const Navbar = () => {
             <div className="flex items-center gap-4 text-md">
                 <SearchInput />
                 {theme === "light" ? (
-                    <Moon size={22} weight="duotone" className="cursor-pointer text-neutral-800" onClick={toggleTheme} />
+                    <Moon size={22} weight="duotone" className="cursor-pointer text-neutral-700" onClick={toggleTheme} />
                 ) : (
-                    <Sun size={22} weight="duotone" className="cursor-pointer text-neutral-800" onClick={toggleTheme} />
+                    <Sun size={22} weight="duotone" className="cursor-pointer text-neutral-700" onClick={toggleTheme} />
                 )}
-                <ClockCounterClockwise size={22} weight="duotone" className="cursor-pointer text-neutral-800" />
-                <Bell size={22} weight="duotone" className="cursor-pointer text-neutral-800" />
-                <Sidebar size={22} weight="duotone" className="cursor-pointer text-neutral-800" onClick={toggleRightSidebar} />
+                <ClockCounterClockwise size={22} weight="duotone" className="cursor-pointer text-neutral-700" />
+                <Bell size={22} weight="duotone" className="cursor-pointer text-neutral-700" />
+                <Sidebar size={22} weight="duotone" className="cursor-pointer text-neutral-700" onClick={toggleRightSidebar} />
             </div>
         </nav>
     )
