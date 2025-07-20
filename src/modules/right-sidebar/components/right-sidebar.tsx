@@ -10,16 +10,9 @@ export const RightSidebar = () => {
     return(
         <Sidebar direction="right" isOpen={isRightSidebarOpen} width="w-[280px]">
             <div className="flex flex-col gap-6 text-sm w-full">
-
-                {/* Notifications */}
                 <Notifications />
-
-                {/* Activities */}
                 <Activities />
-
-                {/* Contacts */}
                 <Contacts />
-
             </div>
         </Sidebar>
     )
