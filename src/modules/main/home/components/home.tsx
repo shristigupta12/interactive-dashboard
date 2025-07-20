@@ -1,9 +1,9 @@
-import { OverallDetails } from "./overall-details/components/overall-details"
-import { ProjectionsVsActualsGraph } from "./projections-vs-actuals-graph/components/projections-vs-actual-graph"
-import { RevenueByLocationGraph } from "./revenue-by-location-graph/components/revenue-by-location-graph"
-import { RevenueGraph } from "./revenue-graph/components/revenue-graph"
-import { TopSellingProducts } from "./top-selling-products/components/top-selling-products"
-import { TotalSalesPieChart } from "./total-sales-pie-chart/components/total-sales-pie-chart"
+import { OverallDetails } from "../overall-details/components/overall-details"
+import { ProjectionsVsActualsGraph } from "../projections-vs-actuals-graph/components/projections-vs-actual-graph"
+import { RevenueByLocationGraph } from "../revenue-by-location-graph/components/revenue-by-location-graph"
+import { RevenueGraph } from "../revenue-graph/components/revenue-graph"
+import { TopSellingProducts } from "../top-selling-products/components/top-selling-products"
+import { TotalSalesPieChart } from "../total-sales-pie-chart/components/total-sales-pie-chart"
 
 export const Home = () => {
     return(

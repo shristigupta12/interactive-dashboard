@@ -3,7 +3,7 @@ import { RightSidebarProvider } from "../contexts/right-sidebar-context"
 import { ThemeProvider } from "../contexts/theme-context"
 import { LeftSidebar } from "../left-sidebar/components/left-sidebar"
 import { Main } from "../main/components/main"
-import { Home } from "../main/home/home"
+import { Home } from "../main/home/components/home"
 import { Navbar } from "../navbar/components/navbar"
 import { RightSidebar } from "../right-sidebar/components/right-sidebar"
 
