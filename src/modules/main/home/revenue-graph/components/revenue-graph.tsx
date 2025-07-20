@@ -4,6 +4,7 @@ import { RevenueData } from "../data/revenue-data"
 import { GraphCartesianGrid } from "../../../../../components/graph/cartesian-grid"
 import { GraphXAxis } from "../../../../../components/graph/x-axis"
 import { GraphYAxis } from "../../../../../components/graph/y-axis"
+import { useTheme } from "../../../../contexts/theme-context"
 
 const headingChild = <p className='text-sm font-semibold'>Revenue</p>
 
@@ -15,7 +16,7 @@ const processedData = RevenueData.map((d, idx) => ({
   }));
   
 
-const graphChild = (
+const graphChild = ({theme}:{theme: string}) => (
     <ResponsiveContainer width="100%" height={318}>
   <LineChart data={processedData}>
     <GraphCartesianGrid />
@@ -35,7 +36,7 @@ const graphChild = (
     <Line
       type="monotone"
       dataKey="currentSolid"
-      stroke="#000000"
+      stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
       strokeWidth={3}
       dot={false}
       connectNulls
@@ -45,7 +46,7 @@ const graphChild = (
     <Line
       type="monotone"
       dataKey="currentDashed"
-      stroke="#000000"
+      stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
       strokeWidth={3}
       dot={false}
       strokeDasharray="5 5"
@@ -57,7 +58,8 @@ const graphChild = (
 )
 
 export const RevenueGraph = () => {
+    const {theme} = useTheme()
     return(
-        <DataContainer headingChild={headingChild} graphChild={graphChild} />
+        <DataContainer headingChild={headingChild} graphChild={graphChild({theme})} />
     )
 }

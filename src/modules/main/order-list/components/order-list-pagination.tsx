@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../../../contexts/theme-context';
 
 interface OrderListPaginationProps {
   currentPage: number;
@@ -11,6 +12,7 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
   totalPages,
   onPageChange
 }) => {
+  const {theme} = useTheme()
   const getPageNumbers = () => {
     const pages = [];
     const maxVisiblePages = 5;
@@ -39,7 +41,7 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
   };
 
   return (
-    <div className="bg-white px-4 py-3 flex items-center justify-between sm:px-6">
+    <div className={`${theme === 'dark' ? 'bg-black/10' : 'bg-white'} px-4 py-3 flex items-center justify-between sm:px-6`}>
       <div className="flex-1 flex justify-between sm:hidden">
         <button
           onClick={() => onPageChange(currentPage - 1)}
@@ -51,7 +53,7 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="ml-3 relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`ml-3 relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-md ${theme === 'dark' ? 'text-white/90 bg-black/80' : 'text-gray-700 bg-white hover:bg-gray-50'} disabled:opacity-50 disabled:cursor-not-allowed`}
         >
           Next
         </button>
@@ -62,7 +64,7 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
             <button
               onClick={() => onPageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="relative inline-flex items-center px-2 py-2 rounded-l-md  bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`relative inline-flex items-center px-2 py-2 rounded-l-md ${theme === 'dark' ? 'bg-black/80 text-white/90' : 'bg-white text-gray-500 hover:bg-gray-50'} disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               <span className="sr-only">Previous</span>
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -76,8 +78,8 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
                 onClick={() => onPageChange(page)}
                 className={`relative inline-flex items-center px-4 py-1 w-7 justify-center text-sm font-medium ${
                   page === currentPage
-                    ? 'z-10 bg-neutral-100 rounded-[8px]'
-                    : 'bg-white text-gray-500 hover:bg-gray-50'
+                    ? `z-10 ${theme === 'dark' ? 'bg-white/10 text-white' : 'bg-neutral-100 text-black'} rounded-[8px]`
+                    : `${theme === 'dark' ? 'bg-black/80 text-white/80' : 'bg-white text-gray-500 hover:bg-gray-50'}`
                 }`}
               >
                 {page}
@@ -87,7 +89,7 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
             <button
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="relative inline-flex items-center px-2 py-2 rounded-r-md bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`relative inline-flex items-center px-2 py-2 rounded-r-md ${theme === 'dark' ? 'bg-black/80 text-white/90' : 'bg-white text-gray-500 hover:bg-gray-50'} disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               <span className="sr-only">Next</span>
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">

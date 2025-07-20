@@ -6,7 +6,10 @@ export const OverallDetailsData: DetailsType[] = [
         title: "Customers",
         value: "3,781",
         color: "bg-[#E3F5FF]",
+        darkModeColor: "bg-[#E3F5FF]",
         percentageChange: 11.01,
+        textColor: "text-black",
+        darkModeTextColor: "text-black",
         changeType: "positive"
     },
     {
@@ -14,7 +17,10 @@ export const OverallDetailsData: DetailsType[] = [
         title: "Orders",
         value: "1,219",
         color: "bg-[#F7F9FB]",
+        darkModeColor: "bg-white/10",
         percentageChange: 0.03,
+        textColor: "text-black",
+        darkModeTextColor: "text-white",
         changeType: "negative"
     },
     {
@@ -22,7 +28,10 @@ export const OverallDetailsData: DetailsType[] = [
         title: "Revenue",
         value: "$695",
         color: "bg-[#F7F9FB]",
+        darkModeColor: "bg-white/10",
         percentageChange: 15.03,
+        textColor: "text-black",
+        darkModeTextColor: "text-white",
         changeType: "positive"
     },
     {
@@ -30,7 +39,10 @@ export const OverallDetailsData: DetailsType[] = [
         title: "Growth",
         value: "30.1%",
         color: "bg-[#E5ECF6]",
+        darkModeColor: "bg-[#E5ECF6]",
         percentageChange: 6.08,
+        textColor: "text-black",
+        darkModeTextColor: "text-black",
         changeType: "positive"
     },
 ]

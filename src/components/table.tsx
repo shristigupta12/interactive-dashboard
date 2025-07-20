@@ -1,6 +1,8 @@
 import { ColumnDef, useReactTable, getCoreRowModel } from "@tanstack/react-table"
+import { useTheme } from "../modules/contexts/theme-context"
 
 export const Table = ({columns, data}: {columns: ColumnDef<any>[], data: any[]}) => {
+    const {theme} = useTheme()
     const table = useReactTable({
         columns, 
         data,
@@ -28,13 +30,13 @@ export const Table = ({columns, data}: {columns: ColumnDef<any>[], data: any[]})
                         </tr>
                     ))}
                 </thead>
-                <tbody className=" divide-y divide-gray-200">
+                <tbody className={`divide-y ${theme === 'dark' ? 'divide-white/10' : 'divide-gray-200'}`}>
                     {table.getRowModel().rows.map(row => (
                         <tr key={row.id}>
                             {row.getVisibleCells().map(cell => (
                                 <td 
                                     key={cell.id}
-                                    className="px-6 py-4 whitespace-nowrap text-sm font-medium"
+                                    className={`px-6 py-4 whitespace-nowrap text-sm font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
                                 >
                                     {cell.getValue() as React.ReactNode}
                                 </td>
