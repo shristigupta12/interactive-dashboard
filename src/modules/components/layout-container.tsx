@@ -4,6 +4,7 @@ import { ThemeProvider } from "../contexts/theme-context"
 import { LeftSidebar } from "../left-sidebar/components/left-sidebar"
 import { Main } from "../main/components/main"
 import { Home } from "../main/home/components/home"
+import { OrderList } from "../main/order-list/components/order-list"
 import { Navbar } from "../navbar/components/navbar"
 import { RightSidebar } from "../right-sidebar/components/right-sidebar"
 
@@ -18,7 +19,8 @@ export const LayoutContainer = () => {
                             <Navbar />
                             <div className="h-full overflow-y-auto pb-7">
                                 <Main>
-                                    <Home />
+                                    {/* <Home /> */}
+                                    <OrderList />
                                 </Main>
                             </div>
                         </div>

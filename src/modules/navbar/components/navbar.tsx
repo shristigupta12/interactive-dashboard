@@ -3,12 +3,13 @@ import { SearchInput } from "../../../components/search-input"
 import { useTheme } from "../../contexts/theme-context"
 import { useLeftSidebar } from "../../contexts/left-sidebar-context"
 import { useRightSidebar } from "../../contexts/right-sidebar-context"
+import { useState } from "react";
 
 export const Navbar = () => {
     const {theme,toggleTheme} = useTheme();
     const {toggleLeftSidebar} = useLeftSidebar();
     const {toggleRightSidebar} = useRightSidebar();
-
+    const [searchTerm, setSearchTerm] = useState("");
     return (
         <nav className="h-[68px] sticky border-b border-black/10 py-5 px-7 flex items-center justify-between">
             <div className="flex items-center gap-4 text-sm">
@@ -19,7 +20,10 @@ export const Navbar = () => {
                 <p>Default</p>
             </div>
             <div className="flex items-center gap-4 text-md">
-                <SearchInput />
+                <SearchInput
+                    value={searchTerm}
+                    onChange={setSearchTerm}
+                />
                 {theme === "light" ? (
                     <Moon size={20} weight="duotone" className="cursor-pointer text-neutral-700" onClick={toggleTheme} />
                 ) : (
