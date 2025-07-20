@@ -1,6 +1,6 @@
 import { OverallDetails } from "../overall-details/components/overall-details"
 import { ProjectionsVsActualsGraph } from "../projections-vs-actuals-graph/components/projections-vs-actual-graph"
-import { RevenueByLocationGraph } from "../revenue-by-location-graph/components/revenue-by-location-graph"
+import { RevenueByLocationMap } from "../revenue-by-location-map/components/revenue-by-location-map"
 import { RevenueGraph } from "../revenue-graph/components/revenue-graph"
 import { TopSellingProducts } from "../top-selling-products/components/top-selling-products"
 import { TotalSalesPieChart } from "../total-sales-pie-chart/components/total-sales-pie-chart"
@@ -18,7 +18,7 @@ export const Home = () => {
                     <div className="col-span-3">
                         <RevenueGraph />
                     </div>
-                    <RevenueByLocationGraph />
+                    <RevenueByLocationMap />
                 </div>
                 <div className="grid grid-cols-4 gap-7">
                     <div className="col-span-3">

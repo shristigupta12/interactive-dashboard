@@ -26,7 +26,7 @@ const graphChild = (
     <Line
       type="monotone"
       dataKey="previous"
-      stroke="#93C5FD"
+      stroke="#A8C5DA"
       strokeWidth={3}
       dot={false}
     />
