@@ -9,14 +9,14 @@ import { RightSidebar } from "../right-sidebar/components/right-sidebar"
 
 export const LayoutContainer = () => {
     return (
-        <div className="flex ">
+        <div className="flex">
             <ThemeProvider>
                 <LeftSidebarProvider>
                     <RightSidebarProvider>
                         <LeftSidebar />
                         <div className="flex-1 h-screen overflow-hidden">
                             <Navbar />
-                            <div className="h-full overflow-y-auto">
+                            <div className="h-full overflow-y-auto pb-7">
                                 <Main>
                                     <Home />
                                 </Main>
