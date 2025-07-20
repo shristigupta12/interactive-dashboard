@@ -1,7 +1,7 @@
 import { CaretRight } from "phosphor-react"
 import { ListType } from "../types/list-type"
 import { useState } from "react";
-import { useNavigate, useLocation } from "@tanstack/react-router"
+import { useNavigate, useLocation } from "react-router-dom"
 import { useTheme } from "../../contexts/theme-context"
 
 export const CollapsibleListItem = ({list}:{list:ListType}) => {
@@ -16,9 +16,9 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
 
     const handleItemClick = () => {
         if (list.id === 'default') {
-            navigate({ to: '/dashboard/default' })
+            navigate('/dashboard/default')
         } else if (list.id === 'order-list') {
-            navigate({ to: '/dashboard/order-list' })
+            navigate('/dashboard/order-list')
         }
     }
 

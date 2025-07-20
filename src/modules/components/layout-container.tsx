@@ -5,7 +5,7 @@ import { LeftSidebar } from "../left-sidebar/components/left-sidebar"
 import { Main } from "../main/components/main"
 import { Navbar } from "../navbar/components/navbar"
 import { RightSidebar } from "../right-sidebar/components/right-sidebar"
-import { Outlet } from "@tanstack/react-router"
+import { Outlet } from "react-router-dom"
 
 const Layout = () => {
     const {theme} = useTheme()

@@ -4,7 +4,7 @@ import { useTheme } from "../../contexts/theme-context"
 import { useLeftSidebar } from "../../contexts/left-sidebar-context"
 import { useRightSidebar } from "../../contexts/right-sidebar-context"
 import { useState } from "react";
-import { useLocation } from "@tanstack/react-router"
+import { useLocation } from "react-router-dom"
 
 export const Navbar = () => {
     const {theme,toggleTheme} = useTheme();
