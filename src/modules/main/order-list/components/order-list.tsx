@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { OrderListTableType } from '../types/order-list-table-type';
 import { orderListTableData } from '../data/order-list-table-data';
 import { OrderListHeader } from '../components/order-list-header';
 import { OrderListTable } from '../components/order-list-table';

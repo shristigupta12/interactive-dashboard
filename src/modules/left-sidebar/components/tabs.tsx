@@ -17,7 +17,7 @@ export const Tabs = () => {
                 <p className={`cursor-pointer ${activeTab === "favorites" ? "text-neutral-500" : "text-neutral-400"}`} onClick={() => setActiveTab("favorites")}>Favorites</p>
                 <p className={`cursor-pointer ${activeTab === "recently" ? "text-neutral-500" : "text-neutral-400"}`} onClick={() => setActiveTab("recently")}>Recently</p>
             </div>
-            {activeTab=='favorites' ?
+            {activeTab==='favorites' ?
                 <div className="flex flex-col gap-1">
                     {FavoritesRecent.favorites.map((item) => (
                         <TabItem key={item.id} tab={item.name} />
