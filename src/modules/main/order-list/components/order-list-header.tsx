@@ -15,7 +15,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
   const {theme} = useTheme()
   return (
     <div className={`${theme === 'dark' ? 'bg-white/10 text-white' : 'bg-[#F7F9FB] text-black'} rounded-[8px] p-2 gap-4`}>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
         <div className="flex items-center gap-2 font-semibold">
           <div className='p-1'>
             <Plus size={16} className='cursor-pointer font-semibold' />
@@ -27,7 +27,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
             <ArrowsDownUp size={16} className='cursor-pointer' />
           </div>
         </div>
-        <div className="relative">
+        <div className="relative w-full sm:w-auto">
           <SearchInput
             value={searchTerm}
             onChange={onSearchChange}

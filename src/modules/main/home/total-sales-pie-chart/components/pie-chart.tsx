@@ -17,8 +17,8 @@ const TotalSalesChart = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <div className="w-[120px] h-[120px] flex justify-center items-center relative">
+    <div className="flex flex-col items-center gap-4 sm:gap-6">
+      <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] flex justify-center items-center relative">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -48,12 +48,12 @@ const TotalSalesChart = () => {
       </div>
 
       {/* Legend */}
-      <div className={`flex flex-col gap-4 w-full font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}>
+      <div className={`flex flex-col gap-3 sm:gap-4 w-full font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}>
         {TotalSalesData?.map((entry, index) => (
           <div key={`legend-${index}`} className={`flex items-center justify-between text-sm ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: theme === 'dark' ? entry.darkModeColor : entry.color }}></span>
-              <span>{entry.name}</span>
+              <span className="truncate">{entry.name}</span>
             </div>
             <span className="font-medium">${entry.value.toFixed(2)}</span>
           </div>

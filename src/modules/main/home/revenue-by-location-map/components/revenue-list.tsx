@@ -5,11 +5,11 @@ export const RevenueList = () => {
   const maxValue = 100;
   const {theme} = useTheme()
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {RevenueByLocationData.features.map(feature => {
         const { name, value } = feature.properties;
         return (
-          <div key={name} className="flex flex-col gap-4">
+          <div key={name} className="flex flex-col gap-3 sm:gap-4">
             <div className={`flex justify-between text-sm font-medium items-center ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}>
               <span>{name}</span>
               <span>{Math.round(value / 1000)}K</span>

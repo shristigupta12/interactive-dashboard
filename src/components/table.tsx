@@ -18,7 +18,7 @@ export const Table = ({columns, data}: {columns: ColumnDef<any>[], data: any[]})
                             {headerGroup.headers.map(header => (
                                 <th 
                                     key={header.id}
-                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200"
+                                    className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200"
                                 >
                                     {header.isPlaceholder
                                         ? null
@@ -36,7 +36,7 @@ export const Table = ({columns, data}: {columns: ColumnDef<any>[], data: any[]})
                             {row.getVisibleCells().map(cell => (
                                 <td 
                                     key={cell.id}
-                                    className={`px-6 py-4 whitespace-nowrap text-sm font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
+                                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
                                 >
                                     {cell.getValue() as React.ReactNode}
                                 </td>

@@ -45,7 +45,7 @@ export const OrderList: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col gap-4 sm:gap-7">
         <h1 className="text-md font-semibold">Order List</h1>
         <div className="flex flex-col gap-3">
             <OrderListHeader 

@@ -23,26 +23,28 @@ export const Navbar = () => {
         return 'Default';
     }
     return (
-        <nav className={`h-[68px] sticky border-b py-5 px-7 flex items-center justify-between ${theme === 'dark' ? 'bg-black border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
-            <div className="flex items-center gap-4 text-sm">
+        <nav className={`h-[68px] sticky border-b py-5 px-4 sm:px-6 lg:px-7 flex items-center justify-between ${theme === 'dark' ? 'bg-black border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
+            <div className="flex items-center gap-2 sm:gap-4 text-sm">
                 <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleLeftSidebar} />
                 <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
-                <p className="text-neutral-500">Dashboards</p>
-                <p className="text-neutral-500">/</p>
-                <p>{getCurrentPageName()}</p>
+                <p className="text-neutral-500 hidden sm:block">Dashboards</p>
+                <p className="text-neutral-500 hidden sm:block">/</p>
+                <p className="truncate">{getCurrentPageName()}</p>
             </div>
-            <div className="flex items-center gap-4 text-md">
-                <SearchInput
-                    value={searchTerm}
-                    onChange={setSearchTerm}
-                    backgroundColor={theme === 'dark' ? 'bg-[#FFFFFF1A]' : 'bg-black/5'}
-                />
+            <div className="flex items-center gap-2 sm:gap-4 text-md">
+                <div className="hidden sm:block">
+                    <SearchInput
+                        value={searchTerm}
+                        onChange={setSearchTerm}
+                        backgroundColor={theme === 'dark' ? 'bg-[#FFFFFF1A]' : 'bg-black/5'}
+                    />
+                </div>
                 {theme === "light" ? (
                     <Moon size={20} weight="duotone" className={`cursor-pointer ${theme === "light" ? 'text-neutral-700' : 'text-white'}`} onClick={toggleTheme} />
                 ) : (
                     <Sun size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleTheme} />
                 )}
-                <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
+                <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'} hidden sm:block`} />
                 <Bell size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
                 <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleRightSidebar} />
             </div>

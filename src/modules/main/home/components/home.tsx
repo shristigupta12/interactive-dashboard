@@ -9,21 +9,21 @@ import { TotalSalesPieChart } from "../total-sales-pie-chart/components/total-sa
 export const Home = () => {
     const {theme} = useTheme()
     return(
-        <div className="flex flex-col gap-7 font-semibold pb-7">
+        <div className="flex flex-col gap-4 sm:gap-7 font-semibold pb-7">
             <p className={`px-2 py-1 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>eCommerce</p>
-            <div className="flex flex-col gap-7">
-                <div className="grid grid-cols-2 gap-7">
+            <div className="flex flex-col gap-4 sm:gap-7">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-7">
                     <OverallDetails />
                     <ProjectionsVsActualsGraph />
                 </div>
-                <div className="grid grid-cols-4 gap-7">
-                    <div className="col-span-3">
+                <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-7">
+                    <div className="xl:col-span-3">
                         <RevenueGraph />
                     </div>
                     <RevenueByLocationMap />
                 </div>
-                <div className="grid grid-cols-4 gap-7">
-                    <div className="col-span-3">
+                <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-7">
+                    <div className="xl:col-span-3">
                         <TopSellingProducts />
                     </div>
                     <TotalSalesPieChart />

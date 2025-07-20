@@ -17,7 +17,7 @@ const processedData = RevenueData.map((d, idx) => ({
   
 
 const graphChild = ({theme}:{theme: string}) => (
-    <ResponsiveContainer width="100%" height={318}>
+    <ResponsiveContainer width="100%" height={250} className="sm:h-[318px]">
   <LineChart data={processedData}>
     <GraphCartesianGrid />
     <GraphXAxis dataKeyName="month" />

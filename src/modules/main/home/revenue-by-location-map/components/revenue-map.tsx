@@ -18,7 +18,7 @@ const blackDot = new L.DivIcon({
 export const RevenueMap = () => {
   const {theme} = useTheme()
     return (
-      <div className="w-full h-[100px] rounded-xl overflow-hidden">
+      <div className="w-full h-[80px] sm:h-[100px] rounded-xl overflow-hidden">
         <MapContainer
         center={[20, 0]}
         zoom={2}

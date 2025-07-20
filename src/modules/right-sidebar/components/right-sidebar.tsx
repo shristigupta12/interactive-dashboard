@@ -8,8 +8,8 @@ import { Contacts } from "./contacts/contacts";
 export const RightSidebar = () => {
     const {isRightSidebarOpen} = useRightSidebar();
     return(
-        <Sidebar direction="right" isOpen={isRightSidebarOpen} width="w-[280px]">
-            <div className="flex flex-col gap-6 text-sm w-full">
+        <Sidebar direction="right" isOpen={isRightSidebarOpen} width="w-[250px] sm:w-[280px]">
+            <div className="flex flex-col gap-4 sm:gap-6 text-sm w-full">
                 <Notifications />
                 <Activities />
                 <Contacts />
