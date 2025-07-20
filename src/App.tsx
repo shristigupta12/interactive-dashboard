@@ -1,12 +1,9 @@
 import React from 'react';
-import { LayoutContainer } from './modules/components/layout-container';
+import { RouterProvider } from '@tanstack/react-router';
+import { router } from './router';
 
 const App: React.FC = () => {
-  return (
-    <div >
-      <LayoutContainer />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App; 

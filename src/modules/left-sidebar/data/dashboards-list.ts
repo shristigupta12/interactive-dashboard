@@ -1,4 +1,4 @@
-import { ChartPieSlice, ShoppingBagOpen, Folder, BookOpen } from "phosphor-react"
+import { ChartPieSlice, ShoppingBagOpen, Folder, BookOpen, ShoppingCartSimple } from "phosphor-react"
 import { ListType } from "../types/list-type"
 
 export const DashboardsList: ListType[] = [
@@ -6,6 +6,11 @@ export const DashboardsList: ListType[] = [
         id: "default",
         name: "Default",
         icon: ChartPieSlice,
+    },
+    {
+        id: "order-list",
+        name: "Order List",
+        icon: ShoppingCartSimple,
     },
     {
         id: "ecommerce",

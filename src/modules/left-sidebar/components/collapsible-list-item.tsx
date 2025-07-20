@@ -1,12 +1,34 @@
 import { CaretRight } from "phosphor-react"
 import { ListType } from "../types/list-type"
 import { useState } from "react";
+import { useNavigate, useLocation } from "@tanstack/react-router"
+import { useTheme } from "../../contexts/theme-context"
 
 export const CollapsibleListItem = ({list}:{list:ListType}) => {
     const [caretOpen, setCaretOpen] = useState(false);
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const currentPath = location.pathname;
+    const {theme} = useTheme()
     const toggleCaret = () => {
         setCaretOpen(caretOpen => !caretOpen)
+    }
+
+    const handleItemClick = () => {
+        if (list.id === 'default') {
+            navigate({ to: '/dashboard/default' })
+        } else if (list.id === 'order-list') {
+            navigate({ to: '/dashboard/order-list' })
+        }
+    }
+
+    const isActive = () => {
+        if (list.id === 'default') {
+            return currentPath === '/dashboard/default' || currentPath === '/'
+        } else if (list.id === 'order-list') {
+            return currentPath === '/dashboard/order-list'
+        }
+        return false
     }
 
     return(
@@ -17,9 +39,12 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
                         <CaretRight size={16}  className={`text-neutral-500 transition-transform duration-500 ${caretOpen ? "rotate-90" : ""}`} onClick={toggleCaret} />
                     </div>
                 }
-                <div className="flex items-center gap-1 flex-1 ">
-                    <list.icon size={16} weight="duotone" className="text-neutral-500" />
-                    <p className="text-sm text-neutral-500">{list.name}</p>
+                <div 
+                    className={`flex items-center gap-1 flex-1 cursor-pointer hover:bg-gray-100 rounded px-1 transition-all duration-200 ${isActive() ? theme === 'dark' ? 'bg-white/15 border-l border-white border-l-2' : 'bg-neutral-100 border-l border-black border-l-2' : ''}`}
+                    onClick={handleItemClick}
+                >
+                    <list.icon size={16} weight="duotone"  />
+                    <p className={`text-sm `}>{list.name}</p>
                 </div>
                 </div>
                 {caretOpen && list.subList && (

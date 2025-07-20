@@ -4,12 +4,24 @@ import { useTheme } from "../../contexts/theme-context"
 import { useLeftSidebar } from "../../contexts/left-sidebar-context"
 import { useRightSidebar } from "../../contexts/right-sidebar-context"
 import { useState } from "react";
+import { useLocation } from "@tanstack/react-router"
 
 export const Navbar = () => {
     const {theme,toggleTheme} = useTheme();
     const {toggleLeftSidebar} = useLeftSidebar();
     const {toggleRightSidebar} = useRightSidebar();
     const [searchTerm, setSearchTerm] = useState("");
+    const location = useLocation();
+    const currentPath = location.pathname;
+    
+    const getCurrentPageName = () => {
+        if (currentPath === '/dashboard/default' || currentPath === '/') {
+            return 'Default';
+        } else if (currentPath === '/dashboard/order-list') {
+            return 'Order List';
+        }
+        return 'Default';
+    }
     return (
         <nav className={`h-[68px] sticky border-b py-5 px-7 flex items-center justify-between ${theme === 'dark' ? 'bg-black border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
             <div className="flex items-center gap-4 text-sm">
@@ -17,7 +29,7 @@ export const Navbar = () => {
                 <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
                 <p className="text-neutral-500">Dashboards</p>
                 <p className="text-neutral-500">/</p>
-                <p>Default</p>
+                <p>{getCurrentPageName()}</p>
             </div>
             <div className="flex items-center gap-4 text-md">
                 <SearchInput

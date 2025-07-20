@@ -3,13 +3,13 @@ import { RightSidebarProvider } from "../contexts/right-sidebar-context"
 import { ThemeProvider, useTheme } from "../contexts/theme-context"
 import { LeftSidebar } from "../left-sidebar/components/left-sidebar"
 import { Main } from "../main/components/main"
-import { Home } from "../main/home/components/home"
-import { OrderList } from "../main/order-list/components/order-list"
 import { Navbar } from "../navbar/components/navbar"
 import { RightSidebar } from "../right-sidebar/components/right-sidebar"
+import { Outlet } from "@tanstack/react-router"
 
 const Layout = () => {
     const {theme} = useTheme()
+    
     return(
         <LeftSidebarProvider>
             <RightSidebarProvider>
@@ -18,8 +18,7 @@ const Layout = () => {
                     <Navbar />
                     <div className="h-full overflow-y-auto pb-7">
                         <Main>
-                            <Home />
-                            <OrderList />
+                            <Outlet />
                         </Main>
                     </div>
                 </div>
