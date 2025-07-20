@@ -1,70 +1,166 @@
-# Getting Started with Create React App
+# Interactive Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive interactive dashboard built with React, TypeScript, and Tailwind CSS. This project provides a comprehensive analytics interface with real-time data visualization, user management, and interactive components.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+### 📊 **Data Visualization**
+- **Revenue Analytics**: Interactive charts showing revenue trends and projections
+- **Sales Performance**: Pie charts displaying total sales distribution
+- **Geographic Data**: Interactive map showing revenue by location
+- **Product Analytics**: Top-selling products table with detailed metrics
 
-### `npm start`
+### 🎨 **Modern UI/UX**
+- **Dark/Light Theme**: Toggle between dark and light themes
+- **Responsive Design**: Fully responsive across all device sizes
+- **Interactive Components**: Hover effects, animations, and smooth transitions
+- **Sidebar Navigation**: Collapsible left sidebar with organized navigation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 📋 **Data Management**
+- **Order Management**: Comprehensive order list with search and pagination
+- **User Management**: User avatars and contact management
+- **Activity Tracking**: Real-time activity feed and notifications
+- **Data Filtering**: Advanced search and filter capabilities
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔧 **Technical Features**
+- **TypeScript**: Full type safety and better development experience
+- **React Router**: Client-side routing with nested routes
+- **Recharts**: Professional data visualization library
+- **Leaflet Maps**: Interactive geographic data visualization
+- **Tailwind CSS**: Utility-first CSS framework for rapid styling
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend Framework**: React 19 with TypeScript
+- **Routing**: React Router DOM v6
+- **Styling**: Tailwind CSS with custom theme support
+- **Data Visualization**: Recharts, D3.js, Leaflet Maps
+- **Icons**: Phosphor React Icons
+- **Build Tool**: Create React App
+- **Deployment**: Netlify
 
-### `npm run build`
+## 📁 Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── graph/          # Chart and visualization components
+│   ├── search-input.tsx
+│   ├── separator.tsx
+│   ├── sidebar.tsx
+│   └── table.tsx
+├── modules/            # Feature-based modules
+│   ├── components/     # Layout components
+│   ├── contexts/       # React contexts for state management
+│   ├── left-sidebar/   # Navigation sidebar
+│   ├── main/          # Main dashboard content
+│   │   ├── home/      # Dashboard home page
+│   │   ├── order-list/ # Order management
+│   │   └── components/
+│   ├── navbar/        # Top navigation bar
+│   └── right-sidebar/ # Activity and notifications sidebar
+├── App.tsx            # Main app component
+└── router.tsx         # Application routing
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd interactive-dashboard
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## 📜 Available Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **`npm start`** - Runs the app in development mode
+- **`npm run build`** - Builds the app for production
+- **`npm test`** - Launches the test runner
+- **`npm run format`** - Formats code with Prettier
+- **`npm run format:check`** - Checks code formatting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎯 Key Features Explained
 
-### Code Splitting
+### Dashboard Overview
+The main dashboard provides a comprehensive view of business metrics:
+- **Revenue Graphs**: Line charts showing revenue trends over time
+- **Sales Distribution**: Pie charts displaying sales by category
+- **Geographic Data**: Interactive map with revenue by location
+- **Product Performance**: Table showing top-selling products
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Navigation System
+- **Left Sidebar**: Collapsible navigation with favorites and recent items
+- **Top Navbar**: Search functionality and user controls
+- **Right Sidebar**: Activity feed, notifications, and contacts
 
-### Analyzing the Bundle Size
+### Data Management
+- **Order List**: Complete order management with search and pagination
+- **User Management**: Contact list with user avatars and details
+- **Activity Tracking**: Real-time activity monitoring
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🎨 Theme System
 
-### Making a Progressive Web App
+The dashboard supports both light and dark themes:
+- **Light Theme**: Clean, professional appearance
+- **Dark Theme**: Modern, eye-friendly interface
+- **Theme Persistence**: User preference is saved across sessions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📱 Responsive Design
 
-### Advanced Configuration
+The dashboard is fully responsive and optimized for:
+- **Desktop**: Full feature set with sidebars
+- **Tablet**: Adaptive layout with collapsible sections
+- **Mobile**: Touch-friendly interface with mobile navigation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🚀 Deployment
 
-### Deployment
+The project is configured for deployment on Netlify with:
+- **Automatic builds** from Git repository
+- **Client-side routing** support
+- **Optimized production builds**
+- **CDN distribution** for fast loading
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔧 Configuration Files
 
-### `npm run build` fails to minify
+- **`netlify.toml`** - Netlify deployment configuration
+- **`public/_redirects`** - Client-side routing support
+- **`.eslintrc.js`** - ESLint configuration
+- **`tailwind.config.js`** - Tailwind CSS configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- **React Team** for the amazing framework
+- **Tailwind CSS** for the utility-first CSS framework
+- **Recharts** for the data visualization components
+- **Phosphor Icons** for the beautiful icon set
