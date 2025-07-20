@@ -40,7 +40,7 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
                     </div>
                 }
                 <div 
-                    className={`flex items-center gap-1 flex-1 cursor-pointer hover:bg-gray-100 rounded px-1 transition-all duration-200 ${isActive() ? theme === 'dark' ? 'bg-white/15 border-l border-white border-l-2' : 'bg-neutral-100 border-l border-black border-l-2' : ''}`}
+                    className={`flex items-center gap-1 flex-1 cursor-pointer rounded px-1  transition-all duration-200 ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'} ${isActive() ? theme === 'dark' ? 'bg-white/15 border-l border-white border-l-2' : 'bg-neutral-100 border-l border-black border-l-2 ' : ''}`}
                     onClick={handleItemClick}
                 >
                     <list.icon size={16} weight="duotone"  />
@@ -50,7 +50,7 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
                 {caretOpen && list.subList && (
                     <div className="flex flex-col gap-1">
                         {list.subList?.map((item) => (
-                            <div key={item.id} className="flex  py-1 pr-2">
+                            <div key={item.id} className="flex py-1 pr-2">
                                 <p className="text-sm text-neutral-500">{item.name}</p>
                             </div>
                         ))}
