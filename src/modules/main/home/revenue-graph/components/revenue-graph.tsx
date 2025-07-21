@@ -5,6 +5,7 @@ import { GraphCartesianGrid } from "../../../../../components/graph/cartesian-gr
 import { GraphXAxis } from "../../../../../components/graph/x-axis"
 import { GraphYAxis } from "../../../../../components/graph/y-axis"
 import { useTheme } from "../../../../contexts/theme-context"
+import { Separator } from "../../../../../components/separator"
 
 const headingChild = <p className='text-sm font-semibold'>Revenue</p>
 
@@ -25,7 +26,7 @@ const graphChild = ({theme}:{theme: string}) => (
 
     {/* Previous Week */}
     <Line
-      type="monotone"
+      type="natural"
       dataKey="previous"
       stroke="#A8C5DA"
       strokeWidth={3}
@@ -34,7 +35,7 @@ const graphChild = ({theme}:{theme: string}) => (
 
     {/* Current Week solid */}
     <Line
-      type="monotone"
+      type="natural"
       dataKey="currentSolid"
       stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
       strokeWidth={3}
@@ -44,7 +45,7 @@ const graphChild = ({theme}:{theme: string}) => (
 
     {/* Current Week dashed */}
     <Line
-      type="monotone"
+      type="natural"
       dataKey="currentDashed"
       stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
       strokeWidth={3}
@@ -57,9 +58,37 @@ const graphChild = ({theme}:{theme: string}) => (
 
 )
 
+const legendChild = ({theme}:{theme: string}) => {
+  // Calculate totals for the legend
+  const currentTotal = processedData.reduce((sum, item) => {
+    const current = item.currentSolid !== null ? item.currentSolid : item.currentDashed;
+    return sum + (current || 0);
+  }, 0);
+  
+  const previousTotal = processedData.reduce((sum, item) => sum + (item.previous || 0), 0);
+
+  return (
+    <div className="flex items-center gap-4 text-xs">
+      <div className="flex items-center gap-2">
+        <Separator direction="vertical" color={theme === 'dark' ? '#C6C7F8' : '#000000'} length="100%" />
+        <div className={`w-2 h-2 rounded-full  ${theme === 'dark' ? 'bg-[#C6C7F8]' : 'bg-[#000000]'}`}></div>
+        <p className="font-thin">Current Week <span className="font-semibold">${currentTotal.toLocaleString()}</span></p>
+      </div>
+      <div className="flex items-center gap-2">
+        <div className={`w-2 h-2 rounded-full bg-[#A8C5DA]`}></div>
+        <p className="font-thin">Previous Week <span className="font-semibold">${previousTotal.toLocaleString()}</span></p>
+      </div>
+    </div>
+  );
+};
+
 export const RevenueGraph = () => {
     const {theme} = useTheme()
     return(
-        <DataContainer headingChild={headingChild} graphChild={graphChild({theme})} />
+        <DataContainer 
+            headingChild={headingChild} 
+            graphChild={graphChild({theme})} 
+            legendChild={legendChild({theme})}
+        />
     )
 }

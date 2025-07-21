@@ -10,7 +10,7 @@ export const SubListItem = ({item, theme}:{item:{id:string; name: string}, theme
         <div className={`flex gap-2 items-center rounded-[8px] py-1 pr-2 w-full ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'} cursor-pointer`}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <div className="flex items-center">
                 <div className={`w-1 h-4 rounded-full ${hovered ? theme === 'dark' ? 'bg-white' : 'bg-black' : 'bg-transparent'}`}></div>
-                <div className="size-2"></div>
+                <div className="size-4"></div>
             </div>
             <p className="text-sm truncate w-full min-w-0">{item.name}</p>
         </div>
@@ -66,7 +66,7 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
                 </div>
                 </div>
                 {caretOpen && list.subList && (
-                    <div className="flex flex-col gap-1 pl-10">
+                    <div className="flex flex-col gap-1 pl-8">
                         {list.subList?.map((item) => (
                             <SubListItem key={item.id} item={item} theme={theme} />
                         ))}
