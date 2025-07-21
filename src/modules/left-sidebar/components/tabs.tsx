@@ -8,9 +8,8 @@ export const TabItem = ({tab, theme}:{tab:string, theme:string}) => {
         <div className={`flex gap-2 items-center rounded-[8px] py-1 pr-2 w-full ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'} cursor-pointer`}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <div className="flex items-center">
                 <div className={`w-1 h-4 rounded-full ${hovered ? theme === 'dark' ? 'bg-white' : 'bg-black' : 'bg-transparent'}`}></div>
-                <div className="size-4"></div>
             </div>
-            <div className="w-2 h-2 rounded-full bg-neutral-300"></div>
+            <div className="w-2 h-2 rounded-full bg-black/20"></div>
             <p>{tab}</p>
         </div>
     )
@@ -20,9 +19,9 @@ export const Tabs = () => {
     const {theme} = useTheme()
     return(
         <div className="flex flex-col gap-1 pb-3">
-            <div className="flex items-center gap-4">
-                <p className={`cursor-pointer ${activeTab === "favorites" ? theme === 'dark' ? "text-white" : "text-black" : theme === 'dark' ? "text-neutral-400" : "text-neutral-500"}`} onClick={() => setActiveTab("favorites")}>Favorites</p>
-                <p className={`cursor-pointer ${activeTab === "recently" ? theme === 'dark' ? "text-white" : "text-black" : theme === 'dark' ? "text-neutral-400" : "text-neutral-500"}`} onClick={() => setActiveTab("recently")}>Recently</p>
+            <div className="flex items-center gap-1">
+                <p className={`cursor-pointer py-1 px-2 ${activeTab === "favorites" ? theme === 'dark' ? "text-white/40" : "text-black/40" : theme === 'dark' ? "text-white/20" : "text-black/20"}`} onClick={() => setActiveTab("favorites")}>Favorites</p>
+                <p className={`cursor-pointer py-1 px-2 ${activeTab === "recently" ? theme === 'dark' ? "text-white/40" : "text-black/40" : theme === 'dark' ? "text-white/20" : "text-black/20"}`} onClick={() => setActiveTab("recently")}>Recently</p>
             </div>
             {activeTab==='favorites' ?
                 <div className="flex flex-col gap-1">

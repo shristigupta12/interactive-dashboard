@@ -33,6 +33,8 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
             navigate('/dashboard/default')
         } else if (list.id === 'order-list') {
             navigate('/dashboard/order-list')
+        }else{
+            toggleCaret()
         }
     }
 
@@ -47,31 +49,31 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
 
     return(
         <div className="flex flex-col w-full">
-            <div className={`flex items-center rounded-[8px] py-1 pr-2 w-full ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'} ${isActive() ? theme === 'dark' ? 'bg-white/15' : 'bg-neutral-100' : ''}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+            <div className={`flex items-center cursor-pointer rounded-[8px] py-1 pr-2 w-full ${isActive() || hovered ? theme === 'dark' ? 'bg-white/10' : 'bg-black/5' : ''}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={handleItemClick}>
                 <div className="flex items-center">
                     <div className={`w-1 h-4 rounded-full ${isActive() || hovered ? theme === 'dark' ? 'bg-white' : 'bg-black' : 'bg-transparent'}`}></div>
-                    <div className="size-4"></div>
+                    {!list.subList && <div className="size-4"></div>}
                 </div>
                 {list.subList &&
                     <div className="pl-1 cursor-pointer">
-                        <CaretRight size={14}  className={`text-neutral-400 transition-transform duration-500 ${caretOpen ? "rotate-90" : ""}`} onClick={toggleCaret} />
+                        <CaretRight size={14}  className={`text-neutral-400 transition-transform duration-500 ${caretOpen ? "rotate-90" : ""}`} />
                     </div>
                 }
                 <div 
                     className={`flex items-center gap-1 flex-1 cursor-pointer rounded-[8px] px-1  transition-all duration-200`}
-                    onClick={handleItemClick}
+                    // onClick={handleItemClick}
                 >
                     <list.icon size={16} weight="duotone"  />
                     <p className={`text-sm `}>{list.name}</p>
                 </div>
+            </div>
+            {caretOpen && list.subList && (
+                <div className="flex flex-col gap-1 pl-4">
+                    {list.subList?.map((item) => (
+                        <SubListItem key={item.id} item={item} theme={theme} />
+                    ))}
                 </div>
-                {caretOpen && list.subList && (
-                    <div className="flex flex-col gap-1 pl-8">
-                        {list.subList?.map((item) => (
-                            <SubListItem key={item.id} item={item} theme={theme} />
-                        ))}
-                    </div>
-                )}
+            )}
         </div>
     )
 }

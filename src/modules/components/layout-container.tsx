@@ -14,7 +14,7 @@ const Layout = () => {
         <LeftSidebarProvider>
             <RightSidebarProvider>
                 <LeftSidebar />
-                <div className={`flex-1 h-screen overflow-hidden ${theme === 'dark' ? 'bg-black text-white text-black/20' : 'bg-white text-black'} transition-all duration-500`}>
+                <div className={`flex-1 h-screen overflow-hidden ${theme === 'dark' ? 'bg-black/90 text-white text-black/20' : 'bg-white text-black'} transition-all duration-500`}>
                     <Navbar />
                     <div className="h-full overflow-y-auto px-4 sm:px-6 lg:p-7">
                         <Main>

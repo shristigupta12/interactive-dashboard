@@ -5,9 +5,11 @@ import { Tabs } from "./tabs";
 import { DashboardsList } from "../data/dashboards-list";
 import { PagesList } from "../data/pages-list";
 import { CollapsibleListItem } from "./collapsible-list-item";
+import { useTheme } from "../../contexts/theme-context";
 
 export const LeftSidebar = () => {
     const {isLeftSidebarOpen} = useLeftSidebar();
+    const {theme} = useTheme();
     return (
         <Sidebar direction="left" isOpen={isLeftSidebarOpen} width="w-[180px] sm:w-[212px]">
             <div className="flex flex-col gap-4 text-sm">
@@ -18,15 +20,15 @@ export const LeftSidebar = () => {
 
                 <Tabs />
 
-                <div className="flex flex-col gap-1">
-                    <p>Dashboards</p>
+                <div className="flex flex-col gap-1 pb-3">
+                    <p className={`px-3 py-1 ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>Dashboards</p>
                     {DashboardsList.map((item, index) => (
                         <CollapsibleListItem key={index} list={item} />
                     ))}
                 </div>
 
-                <div className="flex flex-col gap-1">
-                    <p>Pages</p>
+                <div className="flex flex-col gap-1 pb-3">
+                    <p className={`px-3 py-1 ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>Pages</p>
                     {PagesList.map((item, index) => (
                         <CollapsibleListItem key={index} list={item} />
                     ))}

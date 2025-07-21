@@ -23,7 +23,7 @@ export const Navbar = () => {
         return 'Default';
     }
     return (
-        <nav className={`h-[68px] sticky border-b py-5 px-4 sm:px-6 lg:px-7 flex items-center justify-between ${theme === 'dark' ? 'bg-black border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
+        <nav className={`h-[68px] sticky border-b py-5 px-4 sm:px-6 lg:px-7 flex items-center justify-between ${theme === 'dark' ? ' border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
             <div className="flex items-center gap-2 sm:gap-4 text-sm">
                 <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleLeftSidebar} />
                 <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
