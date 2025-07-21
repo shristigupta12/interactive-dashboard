@@ -27,16 +27,16 @@ export const Navbar = () => {
             <div className="flex items-center gap-2 sm:gap-4 text-sm">
                 <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleLeftSidebar} />
                 <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
-                <p className="text-neutral-500 hidden sm:block">Dashboards</p>
-                <p className="text-neutral-500 hidden sm:block">/</p>
+                <p className={`${theme === 'dark' ? 'text-white/40' : 'text-black/40'} hidden sm:block`}>Dashboards</p>
+                <p className={`${theme === 'dark' ? 'text-white/40' : 'text-black/40'} hidden sm:block`}>/</p>
                 <p className="truncate">{getCurrentPageName()}</p>
             </div>
             <div className="flex items-center gap-2 sm:gap-4 text-md">
-                <div className="hidden sm:block">
+                <div className="hidden sm:block w-[160px]">
                     <SearchInput
                         value={searchTerm}
                         onChange={setSearchTerm}
-                        backgroundColor={theme === 'dark' ? 'bg-[#FFFFFF1A]' : 'bg-black/5'}
+                        backgroundColor={theme === 'dark' ? 'bg-white/10' : 'bg-black/5'}
                     />
                 </div>
                 {theme === "light" ? (

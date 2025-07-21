@@ -9,7 +9,7 @@ export const TabItem = ({tab, theme}:{tab:string, theme:string}) => {
             <div className="flex items-center">
                 <div className={`w-1 h-4 rounded-full ${hovered ? theme === 'dark' ? 'bg-white' : 'bg-black' : 'bg-transparent'}`}></div>
             </div>
-            <div className="w-2 h-2 rounded-full bg-black/20"></div>
+            <div className={`w-[6px] h-[6px] rounded-full ${theme === 'dark' ? 'bg-white/20' : 'bg-black/20'}`}></div>
             <p>{tab}</p>
         </div>
     )
