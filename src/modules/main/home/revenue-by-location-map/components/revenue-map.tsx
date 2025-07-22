@@ -1,7 +1,8 @@
 import L from 'leaflet'
-import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet'
 import { RevenueByLocationData } from '../data/revenue-by-location-data'
 import { useTheme } from '../../../../contexts/theme-context'
+import { motion } from 'framer-motion'
 
 const blackDot = new L.DivIcon({
     html: `<div style="
@@ -40,10 +41,40 @@ export const RevenueMap = () => {
                 feature.geometry.coordinates[0],
                 ]}
                 icon={blackDot}
-            />
+            >
+                <Tooltip 
+                    className="custom-tooltip"
+                    permanent={false}
+                    direction="top"
+                    offset={[0, -10]}
+                >
+                    <div className={`px-2 py-1 text-xs font-medium rounded border shadow-sm ${
+                        theme === 'dark' 
+                            ? 'bg-[#191919] text-white border-white/20' 
+                            : 'text-black bg-white border-black/10'
+                    }`}>
+                        {feature.properties.name}
+                    </div>
+                </Tooltip>
+            </Marker>
             ))}
 
-        <Marker position={[40.7128, -74.0060]} icon={blackDot} />
+        <Marker position={[40.7128, -74.0060]} icon={blackDot}>
+            <Tooltip 
+                className="custom-tooltip"
+                permanent={false}
+                direction="top"
+                offset={[0, -10]}
+            >
+                <div className={`px-2 py-1 text-xs font-medium rounded border shadow-sm ${
+                    theme === 'dark' 
+                        ? 'bg-black/90 text-white border-white/20' 
+                        : 'text-black bg-white border-black/10'
+                }`}>
+                    New York
+                </div>
+            </Tooltip>
+        </Marker>
       </MapContainer>
       </div>
     );

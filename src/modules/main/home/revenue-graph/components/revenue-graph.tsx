@@ -1,4 +1,4 @@
-import { LineChart, ResponsiveContainer, Line } from "recharts"
+import { LineChart, ResponsiveContainer, Line, Tooltip } from "recharts"
 import { DataContainer } from "../../components/data-container"
 import { RevenueData } from "../data/revenue-data"
 import { GraphCartesianGrid } from "../../../../../components/graph/cartesian-grid"
@@ -18,51 +18,100 @@ const processedData = RevenueData.map((d, idx) => ({
   }));
   
 
-const graphChild = ({theme}:{theme: string}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.2 }}
-  >
-    <ResponsiveContainer width="100%" height={250} className="sm:h-[318px] -ml-6">
-    <LineChart data={processedData}>
-      <GraphCartesianGrid />
-      <GraphXAxis dataKeyName="month" />
-      <GraphYAxis />
+const graphChild = ({theme}:{theme: string}) => {
+    const CustomTooltip = ({ active, payload, label }: any) => {
+        if (active && payload && payload.length) {
+            // Filter out null values and combine current week data
+            const filteredPayload = payload.filter((entry: any) => entry.value !== null);
+            
+            // Group by name to avoid duplicates
+            const groupedData = filteredPayload.reduce((acc: any, entry: any) => {
+                if (entry.name === "Current Week") {
+                    if (!acc["Current Week"]) {
+                        acc["Current Week"] = entry;
+                    }
+                } else {
+                    acc[entry.name] = entry;
+                }
+                return acc;
+            }, {});
 
-      {/* Previous Week */}
-      <Line
-        type="natural"
-        dataKey="previous"
-        stroke="#A8C5DA"
-        strokeWidth={3}
-        dot={false}
-      />
+            return (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className={`px-3 py-2 rounded-lg border border-black/10 shadow-[#A7C4D9] ${
+                        theme === 'dark' 
+                            ? 'bg-[#191919] text-white border-white/20' 
+                            : 'text-black bg-white'
+                    }`}
+                >
+                    {Object.values(groupedData).map((entry: any, index: number) => (
+                        <div key={index} className="text-xs p-1 flex items-center gap-1" style={{color: theme === 'dark' ? 'white' : 'black'}}>
+                            <div className='w-2 h-2 rounded-full' style={{backgroundColor: entry.color}}></div>
+                            {entry.name}: <span className='font-thin'>${entry.value?.toLocaleString()}</span>
+                        </div>
+                    ))}
+                </motion.div>
+            );
+        }
+        return null;
+    };
 
-      {/* Current Week solid */}
-      <Line
-        type="natural"
-        dataKey="currentSolid"
-        stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
-        strokeWidth={3}
-        dot={false}
-        connectNulls
-      />
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+        >
+            <ResponsiveContainer width="100%" height={250} className="sm:h-[318px] -ml-6">
+            <LineChart data={processedData}>
+                <GraphCartesianGrid />
+                <GraphXAxis dataKeyName="month" />
+                <GraphYAxis />
+                <Tooltip 
+                    content={<CustomTooltip />}
+                    cursor={false}
+                />
 
-      {/* Current Week dashed */}
-      <Line
-        type="natural"
-        dataKey="currentDashed"
-        stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
-        strokeWidth={3}
-        dot={false}
-        strokeDasharray="5 5"
-        connectNulls
-      />
-    </LineChart>
-  </ResponsiveContainer>
-  </motion.div>
-)
+                {/* Previous Week */}
+                <Line
+                    type="natural"
+                    dataKey="previous"
+                    stroke="#A8C5DA"
+                    strokeWidth={3}
+                    dot={false}
+                    name="Previous Week"
+                />
+
+                {/* Current Week solid */}
+                <Line
+                    type="natural"
+                    dataKey="currentSolid"
+                    stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
+                    strokeWidth={3}
+                    dot={false}
+                    connectNulls
+                    name="Current Week"
+                />
+
+                {/* Current Week dashed */}
+                <Line
+                    type="natural"
+                    dataKey="currentDashed"
+                    stroke={theme === 'dark' ? "#C6C7F8" : "#000000"}
+                    strokeWidth={3}
+                    dot={false}
+                    strokeDasharray="5 5"
+                    connectNulls
+                    name="Current Week"
+                />
+            </LineChart>
+        </ResponsiveContainer>
+        </motion.div>
+    );
+};
 
 const legendChild = ({theme}:{theme: string}) => {
   // Calculate totals for the legend
