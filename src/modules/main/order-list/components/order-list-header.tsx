@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SearchInput } from '../../../../components/search-input';
-import { ArrowsDownUp, FunnelSimple, Plus, X } from 'phosphor-react';
+import { ArrowsDownUp, FunnelSimple, Plus, X, CaretDown } from 'phosphor-react';
 import { useTheme } from '../../../contexts/theme-context';
 import { StatusType } from '../types/order-list-table-type';
 
@@ -24,6 +24,101 @@ interface OrderListHeaderProps {
   onFilterChange: (filterType: keyof FilterState, value: string) => void;
   onClearFilters: () => void;
 }
+
+// Custom Select Component
+interface CustomSelectProps {
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; label: string }[];
+  placeholder?: string;
+  className?: string;
+}
+
+const CustomSelect: React.FC<CustomSelectProps> = ({
+  value,
+  onChange,
+  options,
+  placeholder,
+  className = ''
+}) => {
+  const { theme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+  const selectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const selectedOption = options.find(option => option.value === value);
+
+  return (
+    <div ref={selectRef} className={`relative ${className}`}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-lg border transition-colors ${
+          theme === 'dark' 
+            ? 'bg-black border-gray-600 text-white hover:border-gray-500' 
+            : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'
+        } focus:outline-none focus:ring-2 focus:ring-[#C6C7F8]`}
+      >
+        <span className={selectedOption ? '' : 'text-gray-500'}>
+          {selectedOption ? selectedOption.label : placeholder}
+        </span>
+        <CaretDown 
+          size={12} 
+          className={`transition-transform ${isOpen ? 'rotate-180' : ''} ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+          }`}
+        />
+      </button>
+      
+      {isOpen && (
+        <div className={`absolute top-full left-0 right-0 mt-1 z-50 rounded-lg shadow-lg border ${
+          theme === 'dark' 
+            ? 'bg-black border-gray-600' 
+            : 'bg-white border-gray-200'
+        }`}>
+          <div className="py-1">
+            {options.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => {
+                  onChange(option.value);
+                  setIsOpen(false);
+                }}
+                                 className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                   option.value === value
+                     ? theme === 'dark' 
+                       ? 'bg-[#C6C7F8] text-white' 
+                       : 'bg-[#C6C7F8]/10 text-[#C6C7F8]'
+                     : theme === 'dark'
+                       ? 'text-white hover:bg-gray-800'
+                       : 'text-gray-900 hover:bg-gray-100'
+                 }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
   searchTerm,
@@ -113,7 +208,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
                     </h3>
                     <button
                       onClick={onClearFilters}
-                      className={`text-xs px-3 py-1.5 rounded-md transition-colors ${theme === 'dark' ? 'text-gray-400 hover:text-white hover:bg-black' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}
+                      className={`text-xs px-3 py-1.5 rounded-md transition-colors ${theme === 'dark' ? 'text-gray-400 hover:text-white hover:bg-black' : 'text-gray-500 hover:text-[#C6C7F8] hover:bg-[#C6C7F8]/10'}`}
                     >
                       Clear all
                     </button>
@@ -124,17 +219,12 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
                     <label className={`block text-sm font-medium mb-2.5 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
                       Status
                     </label>
-                    <select
+                    <CustomSelect
                       value={filters.status}
-                      onChange={(e) => onFilterChange('status', e.target.value)}
-                      className={`w-full text-sm rounded-lg border px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${theme === 'dark' ? 'bg-black border-gray-600 text-white hover:border-gray-500' : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'}`}
-                    >
-                      {statusOptions.map(option => (
-                        <option key={option.value} value={option.value} className={theme === 'dark' ? 'bg-black' : 'bg-white'}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={(value) => onFilterChange('status', value)}
+                      options={statusOptions}
+                      placeholder="All Status"
+                    />
                   </div>
 
                   {/* Date Filter */}
@@ -142,17 +232,12 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
                     <label className={`block text-sm font-medium mb-2.5 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
                       Date
                     </label>
-                    <select
+                    <CustomSelect
                       value={filters.date}
-                      onChange={(e) => onFilterChange('date', e.target.value)}
-                      className={`w-full text-sm rounded-lg border px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${theme === 'dark' ? 'bg-black border-gray-600 text-white hover:border-gray-500' : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'}`}
-                    >
-                      {dateOptions.map(option => (
-                        <option key={option.value} value={option.value} className={theme === 'dark' ? 'bg-black' : 'bg-white'}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={(value) => onFilterChange('date', value)}
+                      options={dateOptions}
+                      placeholder="All Dates"
+                    />
                   </div>
                 </div>
               </div>
