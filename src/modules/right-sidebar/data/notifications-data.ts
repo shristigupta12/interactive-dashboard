@@ -24,7 +24,7 @@ export const NotificationsData : NotificationType[] = [
         type: 'bug'
     },
     {
-        id: 'bug1',
+        id: 'subscribe1',
         title: 'Andi Lane subscribed to you',
         icon: Globe,
         time: 'Today, 4:00 AM', // TODO iso format of date

@@ -26,7 +26,7 @@ export const ActivitiesData: ActivitiesType[] = [
         avatar: "/images/right-sidebar/avatar4.png"
     },
     {
-        id: 'activity4',
+        id: 'activity5',
         title: 'Deleted a page in Project X',
         time: "Feb 2, 2023",
         avatar: "/images/right-sidebar/avatar5.png"
