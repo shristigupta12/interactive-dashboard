@@ -51,7 +51,7 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
         <div className="flex flex-col w-full">
             <div className={`flex items-center cursor-pointer rounded-[8px] py-1 pr-2 w-full ${isActive() || hovered ? theme === 'dark' ? 'bg-white/10' : 'bg-black/5' : ''}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={handleItemClick}>
                 <div className="flex items-center">
-                    <div className={`w-1 h-4 rounded-full ${isActive() || hovered ? theme === 'dark' ? 'bg-white' : 'bg-black' : 'bg-transparent'}`}></div>
+                    <div className={`w-1 h-4 rounded-full ${isActive() || hovered ? theme === 'dark' ? 'bg-[#C6C7F8]' : 'bg-black' : 'bg-transparent'}`}></div>
                     {!list.subList && <div className="size-4"></div>}
                 </div>
                 {list.subList &&

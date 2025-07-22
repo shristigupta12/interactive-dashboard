@@ -18,7 +18,7 @@ export const Table = ({columns, data}: {columns: ColumnDef<any>[], data: any[]})
                             {headerGroup.headers.map(header => (
                                 <th 
                                     key={header.id}
-                                    className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200"
+                                    className={`px-3 sm:px-6 py-3 text-left text-xs font-medium ${theme==="dark"?"text-white/40":"text-black/40"} tracking-wider border-b border-gray-200`}
                                 >
                                     {header.isPlaceholder
                                         ? null

@@ -25,7 +25,10 @@ export const OrderListTableRow: React.FC<OrderListTableRowProps> = ({
             type="checkbox"
             checked={isSelected}
             onChange={(e) => onSelect(e.target.checked)}
-            className="h-4 w-4 text-black data-[state=checked]:bg-black data-[state=checked]:text-white border-gray-300 rounded"
+            className="h-4 w-4 text-white border-gray-300 rounded checked:bg-black checked:border-black focus:ring-black focus:ring-offset-0 [&:checked]:bg-black [&:checked]:border-black [&:checked]:text-white dark:bg-black dark:border-black dark:[&:checked]:bg-[#C6C7F8] dark:[&:checked]:border-[#C6C7F8]"
+            style={{
+              accentColor: theme === 'dark' ? '#C6C7F8' : 'black'
+            }}
           />
         </div>
       </td>
