@@ -9,7 +9,7 @@ import { useTheme } from '../../../../contexts/theme-context';
 const headingChild = <p className='text-sm font-semibold'>Projections vs Actuals</p>
 
 const graphChild = ({theme}:{theme: string}) => (
-    <ResponsiveContainer width="100%" height={150} className="sm:h-[168px]">
+    <ResponsiveContainer width="100%" height={150} className="sm:h-[168px] -ml-6">
         <BarChart data={StackedGraphData} barCategoryGap={-20} barGap={-20}>
             <GraphCartesianGrid />
             <GraphXAxis dataKeyName="month" />

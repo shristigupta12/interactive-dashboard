@@ -4,7 +4,7 @@ import { RevenueList } from "./revenue-list"
 
 const headingChild = <p className='text-sm font-semibold'>Revenue by Location</p>
 const graphChild = (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 h-fit">
         <RevenueMap />
         <RevenueList />
     </div>

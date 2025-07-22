@@ -18,7 +18,7 @@ const processedData = RevenueData.map((d, idx) => ({
   
 
 const graphChild = ({theme}:{theme: string}) => (
-    <ResponsiveContainer width="100%" height={250} className="sm:h-[318px]">
+  <ResponsiveContainer width="100%" height={250} className="sm:h-[318px] -ml-6">
   <LineChart data={processedData}>
     <GraphCartesianGrid />
     <GraphXAxis dataKeyName="month" />
@@ -89,6 +89,7 @@ export const RevenueGraph = () => {
             headingChild={headingChild} 
             graphChild={graphChild({theme})} 
             legendChild={legendChild({theme})}
+            justifyCenter={true}
         />
     )
 }
