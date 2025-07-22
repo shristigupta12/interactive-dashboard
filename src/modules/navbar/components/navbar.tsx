@@ -4,6 +4,7 @@ import { SearchInput } from "../../../components/search-input"
 import { useTheme } from "../../contexts/theme-context"
 import { useLeftSidebar } from "../../contexts/left-sidebar-context"
 import { useRightSidebar } from "../../contexts/right-sidebar-context"
+import { useRightSidebarSections } from "../../contexts/right-sidebar-sections-context"
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
@@ -12,6 +13,7 @@ export const Navbar = () => {
     const {theme,toggleTheme} = useTheme();
     const {toggleLeftSidebar, isLeftSidebarOpen} = useLeftSidebar();
     const {toggleRightSidebar, isRightSidebarOpen} = useRightSidebar();
+    const {setNotificationsFirst, setActivitiesFirst} = useRightSidebarSections();
     const [searchTerm, setSearchTerm] = useState("");
     const location = useLocation();
     const currentPath = location.pathname;
@@ -38,6 +40,20 @@ export const Navbar = () => {
         if(isLeftSidebarOpen) toggleLeftSidebar()
         if(isRightSidebarOpen) toggleRightSidebar()
         setSearchInputVisible(true)
+    }
+
+    const handleBellClick = () => {
+        if(!isRightSidebarOpen) {
+            toggleRightSidebar()
+        }
+        setNotificationsFirst()
+    }
+
+    const handleClockClick = () => {
+        if(!isRightSidebarOpen) {
+            toggleRightSidebar()
+        }
+        setActivitiesFirst()
     }
     
     const getCurrentPageName = () => {
@@ -110,7 +126,7 @@ export const Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2 }}
                 >
-                    <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} hidden sm:block transition-all duration-300 ease-in-out`} />
+                    <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} hidden sm:block transition-all duration-300 ease-in-out`} onClick={handleClockClick} />
                 </motion.div>
                 <motion.div
                     whileHover={{ scale: 1.1 }}
@@ -131,6 +147,7 @@ export const Navbar = () => {
                         size={20} 
                         weight="duotone" 
                         className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} 
+                        onClick={handleBellClick}
                     />
                 </motion.div>
                 <motion.div
