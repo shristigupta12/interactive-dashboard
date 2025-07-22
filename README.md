@@ -15,12 +15,13 @@ A modern, responsive interactive dashboard built with React, TypeScript, and Tai
 - **Responsive Design**: Fully responsive across all device sizes
 - **Interactive Components**: Hover effects, animations, and smooth transitions
 - **Sidebar Navigation**: Collapsible left sidebar with organized navigation
+- **Smooth Animations**: Framer Motion powered animations and transitions
 
 ### 📋 **Data Management**
 - **Order Management**: Comprehensive order list with search and pagination
 - **User Management**: User avatars and contact management
 - **Activity Tracking**: Real-time activity feed and notifications
-- **Data Filtering**: Advanced search and filter capabilities
+- **Data Filtering**: Advanced search and filter capabilities with custom dropdowns
 
 ### 🔧 **Technical Features**
 - **TypeScript**: Full type safety and better development experience
@@ -28,13 +29,17 @@ A modern, responsive interactive dashboard built with React, TypeScript, and Tai
 - **Recharts**: Professional data visualization library
 - **Leaflet Maps**: Interactive geographic data visualization
 - **Tailwind CSS**: Utility-first CSS framework for rapid styling
+- **Framer Motion**: Advanced animations and micro-interactions
+- **TanStack Table**: Powerful table management with sorting and filtering
 
 ## 🛠️ Tech Stack
 
 - **Frontend Framework**: React 19 with TypeScript
 - **Routing**: React Router DOM v6
 - **Styling**: Tailwind CSS with custom theme support
+- **Animations**: Framer Motion for smooth transitions and micro-interactions
 - **Data Visualization**: Recharts, D3.js, Leaflet Maps
+- **Table Management**: TanStack React Table for advanced table features
 - **Icons**: Phosphor React Icons
 - **Build Tool**: Create React App
 - **Deployment**: Netlify
@@ -117,12 +122,19 @@ The main dashboard provides a comprehensive view of business metrics:
 - **User Management**: Contact list with user avatars and details
 - **Activity Tracking**: Real-time activity monitoring
 
+### Advanced Features
+- **Custom Filter Components**: Modern dropdown filters with smooth animations
+- **Responsive Tables**: TanStack Table integration for advanced table features
+- **Smooth Animations**: Framer Motion powered transitions throughout the app
+- **Theme System**: Comprehensive dark/light theme support
+
 ## 🎨 Theme System
 
 The dashboard supports both light and dark themes:
 - **Light Theme**: Clean, professional appearance
 - **Dark Theme**: Modern, eye-friendly interface
 - **Theme Persistence**: User preference is saved across sessions
+- **Primary Color**: Consistent branding with `#C6C7F8` primary color
 
 ## 📱 Responsive Design
 
@@ -146,6 +158,23 @@ The project is configured for deployment on Netlify with:
 - **`.eslintrc.js`** - ESLint configuration
 - **`tailwind.config.js`** - Tailwind CSS configuration
 
+## 🎭 Animation Features
+
+The dashboard includes sophisticated animations powered by Framer Motion:
+- **Page Transitions**: Smooth route transitions
+- **Component Animations**: Hover effects and micro-interactions
+- **Sidebar Animations**: Collapsible sidebar with smooth transitions
+- **Loading States**: Animated loading indicators
+- **Notification Animations**: Smooth notification appearances
+
+## 📊 Data Visualization Features
+
+Advanced data visualization capabilities:
+- **Interactive Charts**: Recharts-powered responsive charts
+- **Geographic Maps**: Leaflet.js interactive maps
+- **Real-time Updates**: Dynamic data updates with animations
+- **Custom Tooltips**: Enhanced user experience with detailed tooltips
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -163,4 +192,6 @@ This project is licensed under the MIT License.
 - **React Team** for the amazing framework
 - **Tailwind CSS** for the utility-first CSS framework
 - **Recharts** for the data visualization components
+- **Framer Motion** for the smooth animations
+- **TanStack** for the powerful table management
 - **Phosphor Icons** for the beautiful icon set
