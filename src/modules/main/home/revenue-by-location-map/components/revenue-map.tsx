@@ -2,7 +2,7 @@ import L from 'leaflet'
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet'
 import { RevenueByLocationData } from '../data/revenue-by-location-data'
 import { useTheme } from '../../../../contexts/theme-context'
-import { motion } from 'framer-motion'
+
 
 const blackDot = new L.DivIcon({
     html: `<div style="

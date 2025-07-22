@@ -20,6 +20,10 @@ export const router = createBrowserRouter([
         path: 'dashboard/order-list',
         element: <OrderList />,
       },
+      {
+        path: '*',
+        element: <Navigate to="/dashboard/default" replace />,
+      },
     ],
   },
 ]) 

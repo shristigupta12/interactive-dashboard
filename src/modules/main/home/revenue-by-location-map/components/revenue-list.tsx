@@ -36,7 +36,7 @@ export const RevenueList = () => {
   return (
     <div className="flex flex-col gap-4">
       {RevenueByLocationData.features.map(feature => {
-        const { name, value } = feature.properties;
+        const { name } = feature.properties;
         const animatedValue = animatedValues[name] || 0;
         
         return (

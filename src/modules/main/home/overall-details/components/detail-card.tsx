@@ -1,9 +1,6 @@
 import { TrendDown, TrendUp } from "phosphor-react";
 import { useTheme } from "../../../../contexts/theme-context";
 import { DetailsType } from "../types/details-type";
-import { useLeftSidebar } from "../../../../contexts/left-sidebar-context";
-import { useRightSidebar } from "../../../../contexts/right-sidebar-context";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export const DetailCard = ({detail}: {detail: DetailsType}) => {

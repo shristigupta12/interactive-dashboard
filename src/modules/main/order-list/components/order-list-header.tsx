@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SearchInput } from '../../../../components/search-input';
-import { ArrowsDownUp, FunnelSimple, Plus, X, CaretDown } from 'phosphor-react';
+import { ArrowsDownUp, FunnelSimple, Plus, CaretDown } from 'phosphor-react';
 import { useTheme } from '../../../contexts/theme-context';
 import { StatusType } from '../types/order-list-table-type';
 
