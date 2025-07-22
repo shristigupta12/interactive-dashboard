@@ -1,8 +1,9 @@
+// src/modules/main/order-list/components/order-list-table.tsx
 import React from 'react';
 import { OrderListTableType } from '../types/order-list-table-type';
-import { OrderListTableRow } from '../components/order-list-table-row';
-import { OrderListTableHeader } from '../components/order-list-table-header';
+import { Table } from '../../../../components/table';
 import { useTheme } from '../../../contexts/theme-context';
+import { orderListColumns } from '../constants/order-list-columns';
 
 interface OrderListTableProps {
   data: OrderListTableType[];
@@ -21,26 +22,23 @@ export const OrderListTable: React.FC<OrderListTableProps> = ({
   allSelected,
   someSelected
 }) => {
-  const {theme} = useTheme()
+  const {theme} = useTheme();
+
+  const columns = orderListColumns(theme, selectedRows, onSelectRow, onSelectAll, allSelected, someSelected);
+
+  // Define the getRowClassName function for row styling
+  const getRowClassName = (row: OrderListTableType, isSelected: boolean, currentTheme: string): string => {
+    return isSelected
+      ? (currentTheme === 'dark' ? 'bg-white/10' : 'bg-blue-50')
+      : (currentTheme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-50');
+  };
+
   return (
-    <div className="overflow-x-auto">
-      <table className={`min-w-full divide-y ${theme === 'dark' ? 'divide-gray-700' : 'divide-gray-200'}`}>
-        <OrderListTableHeader 
-          allSelected={allSelected}
-          someSelected={someSelected}
-          onSelectAll={onSelectAll}
-        />
-        <tbody className={`${theme === 'dark' ? 'bg-black/10 text-white' : 'bg-white text-black'} divide-y ${theme === 'dark' ? 'divide-gray-700' : 'divide-gray-200'}`}>
-          {data.map((order) => (
-            <OrderListTableRow
-              key={order.id}
-              order={order}
-              isSelected={selectedRows.includes(order.id)}
-              onSelect={(checked) => onSelectRow(order.id, checked)}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Table
+      columns={columns}
+      data={data}
+      getRowClassName={getRowClassName} // Pass the row class name function
+      selectedRows={selectedRows} // Pass selected rows to Table for row styling
+    />
   );
-}; 
+};

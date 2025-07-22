@@ -1,3 +1,4 @@
+// src/modules/navbar/components/navbar.tsx
 import { Bell, Moon, Sidebar, Star, Sun, ClockCounterClockwise, MagnifyingGlass } from "phosphor-react"
 import { SearchInput } from "../../../components/search-input"
 import { useTheme } from "../../contexts/theme-context"
@@ -30,7 +31,7 @@ export const Navbar = () => {
     }
     
     const getCurrentPageName = () => {
-        if (currentPath === '/dashboard/default' || currentPath === '/') {
+        if (currentPath === '/dashboard/default' || currentPath === '/' || currentPath === '/dashboard') {
             return 'Default';
         } else if (currentPath === '/dashboard/order-list') {
             return 'Order List';
@@ -40,8 +41,8 @@ export const Navbar = () => {
     return (
         <nav className={`h-[68px] sticky border-b py-5 px-2 lg:px-7 flex items-center justify-between gap-2 ${theme === 'dark' ? ' border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
             <div className="flex items-center gap-2 lg:gap-4 text-sm">
-                <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleLeftSidebar} />
-                <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
+                <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleLeftSidebar} />
+                <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
                 <p className={`${theme === 'dark' ? 'text-white/40' : 'text-black/40'} hidden lg:block`}>Dashboards</p>
                 <p className={`${theme === 'dark' ? 'text-white/40' : 'text-black/40'} hidden lg:block`}>/</p>
                 <p className="truncate">{getCurrentPageName()}</p>
@@ -54,9 +55,9 @@ export const Navbar = () => {
                         backgroundColor={theme === 'dark' ? 'bg-white/10' : 'bg-black/5'}
                     />
                 </div>
-                <div className={`w-[160px] lg:hidden visible w-fit`}>
+                <div className={`w-[160px] lg:hidden visible w-fit transition-all duration-300 ease-in-out`}>
                     {!searchInputVisible ?
-                        <MagnifyingGlass size={20} onClick={handleSearchIconClick}/>
+                        <MagnifyingGlass size={20} className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'} hover:text-[#A8C5DA] transition-all duration-300 ease-in-out`} onClick={handleSearchIconClick}/>
                         :
                         <SearchInput
                             value={searchTerm}
@@ -66,13 +67,13 @@ export const Navbar = () => {
                     }
                 </div>
                 {theme === "light" ? (
-                    <Moon size={20} weight="duotone" className={`cursor-pointer ${theme === "light" ? 'text-neutral-700' : 'text-white'}`} onClick={toggleTheme} />
+                    <Moon size={20} weight="duotone" className={`cursor-pointer ${theme === "light" ? 'text-neutral-700 hover:text-[#4a7391]' : 'text-white hover:text-[#A8C5DA]'} transition-all duration-300 ease-in-out`} onClick={toggleTheme} />
                 ) : (
-                    <Sun size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleTheme} />
+                    <Sun size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleTheme} />
                 )}
-                <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'} hidden sm:block`} />
-                <Bell size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} />
-                <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'}`} onClick={toggleRightSidebar} />
+                <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} hidden sm:block transition-all duration-300 ease-in-out`} />
+                <Bell size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
+                <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleRightSidebar} />
             </div>
         </nav>
     )
