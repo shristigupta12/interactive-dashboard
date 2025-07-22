@@ -12,8 +12,8 @@ export const Activities = () => {
                     <div key={item.id} className="flex flex-col">
                         <ActivitesItem item={item} />
                         {index !== ActivitiesData.length - 1 && (
-                            <div className="pl-3 -mt-1 mb-1">
-                                <Separator direction="vertical" color="neutral-300" length="h-[14px]" />
+                            <div className="pl-[14px] -mt-2 mb-1">
+                                <Separator direction="vertical" color="bg-black/10" length="h-[14px]" />
                             </div>
                         )}
                     </div>

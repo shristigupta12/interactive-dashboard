@@ -9,7 +9,7 @@ export const NotificationItem = ({item}:{item:NotificationType}) => {
             </div>
             <div className="flex flex-col w-full rounded-[8px] min-w-0">
                 <p className="truncate">{item.title}</p>
-                <p className="text-xs text-neutral-500">{item.time}</p>
+                <p className="text-xs text-black/40">{item.time}</p>
             </div>
         </div>
     )
