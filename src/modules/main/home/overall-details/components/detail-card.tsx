@@ -12,15 +12,15 @@ export const DetailCard = ({detail}: {detail: DetailsType}) => {
 
     return(
         <motion.div 
-            className={`w-full h-full rounded-[16px] ${theme === 'dark' ? detail.darkModeColor : detail.color} p-4 sm:p-6 flex flex-col gap-2 `}
+            className={`w-full h-full rounded-[16px] ${theme === 'dark' ? detail.darkModeColor : detail.color} p-4 sm:p-6 flex flex-col gap-2 cursor-pointer`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.2 }
+                opacity: 0.8,
+                boxShadow: theme === 'dark' ? "0 2px 4px rgba(255, 255, 255, 0.05)" : "0 2px 4px rgba(0, 0, 0, 0.11)",
+                transition: { duration: 0.3 }
             }}
-            whileTap={{ scale: 0.98 }}
         >
             <p className={`text-sm font-semibold ${theme === 'dark' ? detail.darkModeTextColor : detail.textColor}`}>{detail.title}</p>
             <div className="flex items-center justify-between">
