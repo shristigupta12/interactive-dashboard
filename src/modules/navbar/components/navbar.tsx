@@ -4,7 +4,7 @@ import { SearchInput } from "../../../components/search-input"
 import { useTheme } from "../../contexts/theme-context"
 import { useLeftSidebar } from "../../contexts/left-sidebar-context"
 import { useRightSidebar } from "../../contexts/right-sidebar-context"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
 
@@ -16,6 +16,8 @@ export const Navbar = () => {
     const location = useLocation();
     const currentPath = location.pathname;
     const [searchInputVisible, setSearchInputVisible] = useState(false)
+    const [hasAnimated, setHasAnimated] = useState(false)
+    const animationTriggered = useRef(false)
 
     useEffect(() => {
         if(isLeftSidebarOpen || isRightSidebarOpen){
@@ -24,6 +26,13 @@ export const Navbar = () => {
             setSearchInputVisible(true)
         }
     }, [isLeftSidebarOpen, isRightSidebarOpen])
+
+    useEffect(() => {
+        if (!animationTriggered.current) {
+            animationTriggered.current = true
+            setHasAnimated(true)
+        }
+    }, [])
 
     const handleSearchIconClick = () => {
         if(isLeftSidebarOpen) toggleLeftSidebar()
@@ -106,9 +115,23 @@ export const Navbar = () => {
                 <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
+                    animate={hasAnimated ? {
+                        rotate: [0, -15, 15, -15, 15, -15, 15, 0],
+                    } : {}}
+                    transition={{
+                        scale: { duration: 0.2 },
+                        rotate: {
+                            duration: 4,
+                            ease: "easeInOut",
+                            times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1]
+                        }
+                    }}
                 >
-                    <Bell size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
+                    <Bell 
+                        size={20} 
+                        weight="duotone" 
+                        className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} 
+                    />
                 </motion.div>
                 <motion.div
                     whileHover={{ scale: 1.1 }}
