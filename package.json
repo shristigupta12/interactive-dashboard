@@ -15,6 +15,7 @@
     "@types/react-dom": "^19.1.6",
     "@types/react-router-dom": "^5.3.3",
     "d3-shape": "^3.2.0",
+    "framer-motion": "^12.23.6",
     "leaflet": "^1.9.4",
     "phosphor-react": "^1.4.1",
     "react": "^19.1.0",

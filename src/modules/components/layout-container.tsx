@@ -6,6 +6,7 @@ import { Main } from "../main/components/main"
 import { Navbar } from "../navbar/components/navbar"
 import { RightSidebar } from "../right-sidebar/components/right-sidebar"
 import { Outlet } from "react-router-dom"
+import { motion, AnimatePresence } from "framer-motion"
 
 const Layout = () => {
     const {theme} = useTheme()
@@ -14,14 +15,34 @@ const Layout = () => {
         <LeftSidebarProvider>
             <RightSidebarProvider>
                 <LeftSidebar />
-                <div className={`flex-1 h-screen overflow-hidden ${theme === 'dark' ? 'bg-black/90 text-white text-black/20' : 'bg-white text-black'} transition-all duration-500`}>
+                <motion.div 
+                    className={`flex-1 h-screen overflow-hidden ${theme === 'dark' ? 'bg-black/90 text-white text-black/20' : 'bg-white text-black'} transition-all duration-500`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                >
                     <Navbar />
-                    <div className="h-[92vh] overflow-y-auto p-4 sm:px-6 lg:p-7">
+                    <motion.div 
+                        className="h-[92vh] overflow-y-auto p-4 sm:px-6 lg:p-7"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                    >
                         <Main>
-                            <Outlet />
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={window.location.pathname}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <Outlet />
+                                </motion.div>
+                            </AnimatePresence>
                         </Main>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
                 <RightSidebar />
             </RightSidebarProvider>
         </LeftSidebarProvider>
@@ -30,10 +51,15 @@ const Layout = () => {
 
 export const LayoutContainer = () => {
     return (
-        <div className="flex min-h-screen">
+        <motion.div 
+            className="flex min-h-screen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             <ThemeProvider>
                 <Layout />
             </ThemeProvider>
-        </div>
+        </motion.div>
     )
 }

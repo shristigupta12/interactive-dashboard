@@ -7,6 +7,7 @@ import { PagesList } from "../data/pages-list";
 import { CollapsibleListItem } from "./collapsible-list-item";
 import { useTheme } from "../../contexts/theme-context";
 import { X } from "phosphor-react";
+import { motion } from "framer-motion";
 
 export const LeftSidebar = () => {
     const {isLeftSidebarOpen, toggleLeftSidebar} = useLeftSidebar();
@@ -14,29 +15,64 @@ export const LeftSidebar = () => {
     return (
         <Sidebar direction="left" isOpen={isLeftSidebarOpen} width="w-[100vw] custom-md:w-[50vw] md:w-[212px]">
             <div className="flex flex-col gap-4 text-sm">
-                <div className="flex justify-between items-center">
+                <motion.div 
+                    className="flex justify-between items-center"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                >
                     <div className="flex items-center gap-2">
                         <img src={UserData.avatar} alt="user-avatar" className="w-6 h-6 rounded-full" />
                         <p className="truncate">{UserData.name}</p>
                     </div>
                     <X size={16} className={`text-black/40 lg:hidden block ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`} onClick={()=>{toggleLeftSidebar()}} />
-                </div>
+                </motion.div>
 
-                <Tabs />
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                >
+                    <Tabs />
+                </motion.div>
 
-                <div className="flex flex-col gap-1 pb-3">
+                <motion.div 
+                    className="flex flex-col gap-1 pb-3"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                >
                     <p className={`px-3 py-1 ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>Dashboards</p>
                     {DashboardsList.map((item, index) => (
-                        <CollapsibleListItem key={index} list={item} />
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                        >
+                            <CollapsibleListItem list={item} />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col gap-1 pb-3">
+                <motion.div 
+                    className="flex flex-col gap-1 pb-3"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.4 }}
+                >
                     <p className={`px-3 py-1 ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>Pages</p>
                     {PagesList.map((item, index) => (
-                        <CollapsibleListItem key={index} list={item} />
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                        >
+                            <CollapsibleListItem list={item} />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </Sidebar>
     )

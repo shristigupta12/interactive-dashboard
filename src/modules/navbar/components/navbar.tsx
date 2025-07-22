@@ -6,6 +6,7 @@ import { useLeftSidebar } from "../../contexts/left-sidebar-context"
 import { useRightSidebar } from "../../contexts/right-sidebar-context"
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"
+import { motion } from "framer-motion"
 
 export const Navbar = () => {
     const {theme,toggleTheme} = useTheme();
@@ -41,8 +42,20 @@ export const Navbar = () => {
     return (
         <nav className={`h-[68px] sticky border-b py-5 px-2 lg:px-7 flex items-center justify-between gap-2 ${theme === 'dark' ? ' border-neutral-600 text-white' : 'bg-white border-black/10 text-black'} transition-all duration-500`}>
             <div className="flex items-center gap-2 lg:gap-4 text-sm">
-                <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleLeftSidebar} />
-                <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleLeftSidebar} />
+                </motion.div>
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Star size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
+                </motion.div>
                 <p className={`${theme === 'dark' ? 'text-white/40' : 'text-black/40'} hidden lg:block`}>Dashboards</p>
                 <p className={`${theme === 'dark' ? 'text-white/40' : 'text-black/40'} hidden lg:block`}>/</p>
                 <p className="truncate">{getCurrentPageName()}</p>
@@ -57,7 +70,13 @@ export const Navbar = () => {
                 </div>
                 <div className={`w-[160px] lg:hidden visible w-fit transition-all duration-300 ease-in-out`}>
                     {!searchInputVisible ?
-                        <MagnifyingGlass size={20} className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'} hover:text-[#A8C5DA] transition-all duration-300 ease-in-out`} onClick={handleSearchIconClick}/>
+                        <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <MagnifyingGlass size={20} className={`cursor-pointer ${theme === 'dark' ? 'text-white' : 'text-neutral-700'} hover:text-[#A8C5DA] transition-all duration-300 ease-in-out`} onClick={handleSearchIconClick}/>
+                        </motion.div>
                         :
                         <SearchInput
                             value={searchTerm}
@@ -66,14 +85,38 @@ export const Navbar = () => {
                         />
                     }
                 </div>
-                {theme === "light" ? (
-                    <Moon size={20} weight="duotone" className={`cursor-pointer ${theme === "light" ? 'text-neutral-700 hover:text-[#4a7391]' : 'text-white hover:text-[#A8C5DA]'} transition-all duration-300 ease-in-out`} onClick={toggleTheme} />
-                ) : (
-                    <Sun size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleTheme} />
-                )}
-                <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} hidden sm:block transition-all duration-300 ease-in-out`} />
-                <Bell size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
-                <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleRightSidebar} />
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {theme === "light" ? (
+                        <Moon size={20} weight="duotone" className={`cursor-pointer ${theme === "light" ? 'text-neutral-700 hover:text-[#4a7391]' : 'text-white hover:text-[#A8C5DA]'} transition-all duration-300 ease-in-out`} onClick={toggleTheme} />
+                    ) : (
+                        <Sun size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleTheme} />
+                    )}
+                </motion.div>
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <ClockCounterClockwise size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} hidden sm:block transition-all duration-300 ease-in-out`} />
+                </motion.div>
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Bell size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} />
+                </motion.div>
+                <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Sidebar size={20} weight="duotone" className={`cursor-pointer ${theme === 'dark' ? 'text-white hover:text-[#A8C5DA]' : 'text-neutral-700 hover:text-[#4a7391]'} transition-all duration-300 ease-in-out`} onClick={toggleRightSidebar} />
+                </motion.div>
             </div>
         </nav>
     )

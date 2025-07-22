@@ -2,6 +2,7 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Text } from 'recharts';
 import { TotalSalesData } from '../data/total-sales-data';
 import { useTheme } from '../../../../contexts/theme-context';
+import { motion } from 'framer-motion';
 
 const TotalSalesChart = () => {
   const {theme} = useTheme()
@@ -17,8 +18,18 @@ const TotalSalesChart = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 sm:gap-6">
-      <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] flex justify-center items-center relative">
+    <motion.div 
+      className="flex flex-col items-center gap-4 sm:gap-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div 
+        className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] flex justify-center items-center relative"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -42,24 +53,40 @@ const TotalSalesChart = () => {
           </PieChart>
         </ResponsiveContainer>
         {/* The percentage text overlay */}
-        <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-700'} text-white px-3 py-1 rounded-[4px] font-semibold text-sm `}>
+        <motion.div 
+          className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-700'} text-white px-3 py-1 rounded-[4px] font-semibold text-sm `}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
+        >
             {`${affiliatePercentage.toFixed(1)}%`}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Legend */}
-      <div className={`flex flex-col gap-3 sm:gap-4 w-full font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}>
+      <motion.div 
+        className={`flex flex-col gap-3 sm:gap-4 w-full font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         {TotalSalesData?.map((entry, index) => (
-          <div key={`legend-${index}`} className={`flex items-center justify-between text-sm ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}>
+          <motion.div 
+            key={`legend-${index}`} 
+            className={`flex items-center justify-between text-sm ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+          >
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: theme === 'dark' ? entry.darkModeColor : entry.color }}></span>
               <span className="truncate">{entry.name}</span>
             </div>
             <span className="font-medium">${entry.value.toFixed(2)}</span>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
