@@ -41,7 +41,7 @@ export const OrderListPagination: React.FC<OrderListPaginationProps> = ({
   };
 
   return (
-    <div className={`${theme === 'dark' ? 'bg-black/10' : 'bg-white'} px-4 py-3 flex items-center justify-between sm:px-6`}>
+    <div className={` px-4 py-3 flex items-center justify-between sm:px-6`}>
       <div className="flex-1 flex justify-between sm:hidden">
         <button
           onClick={() => onPageChange(currentPage - 1)}

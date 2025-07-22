@@ -26,8 +26,8 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
 
   return (
     <div className="overflow-x-auto relative sm:rounded-lg">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className={`text-xs uppercase ${theme === 'dark' ? 'bg-black/80 text-white/80' : 'bg-gray-50 text-gray-700'}`}>
+      <table className="w-full text-sm text-left text-black/40 dark:text-gray-400">
+        <thead className={`text-sm ${theme === 'dark' ? ' text-white/80' : 'text-black/40'}`}>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -54,7 +54,7 @@ export function Table<TData>({ columns, data, getRowClassName, selectedRows }: T
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
+                    className={`px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-thin ${theme === 'dark' ? 'text-white/80' : 'text-black'}`}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
