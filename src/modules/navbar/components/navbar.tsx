@@ -47,8 +47,7 @@ export const Navbar = () => {
                 <p className="truncate">{getCurrentPageName()}</p>
             </div>
             <div className="flex items-center gap-2 lg:gap-4 text-md">
-
-                <div className={`w-[160px] lg:visible hidden`}>
+                <div className={`w-[160px] hidden lg:block `}>
                     <SearchInput
                         value={searchTerm}
                         onChange={setSearchTerm}
