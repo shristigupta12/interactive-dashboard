@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState, useEffect } from "react";
 
 const RightSidebarContext = createContext<RightSidebarContextType | null>(null)
 
@@ -16,7 +16,24 @@ type RightSidebarContextType = {
 }
 
 export const RightSidebarProvider = ({children}: {children: React.ReactNode}) => {
-    const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(true);
+    const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 768px)'); // md breakpoint
+        
+        const handleResize = (e: MediaQueryListEvent) => {
+            setIsRightSidebarOpen(e.matches);
+        };
+
+        // Set initial state based on current screen size
+        setIsRightSidebarOpen(mediaQuery.matches);
+
+        // Add event listener for screen size changes
+        mediaQuery.addEventListener('change', handleResize);
+
+        // Cleanup
+        return () => mediaQuery.removeEventListener('change', handleResize);
+    }, []);
 
     const toggleRightSidebar = useCallback(() => {
         setIsRightSidebarOpen(prev => !prev)

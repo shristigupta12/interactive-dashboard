@@ -6,16 +6,20 @@ import { DashboardsList } from "../data/dashboards-list";
 import { PagesList } from "../data/pages-list";
 import { CollapsibleListItem } from "./collapsible-list-item";
 import { useTheme } from "../../contexts/theme-context";
+import { X } from "phosphor-react";
 
 export const LeftSidebar = () => {
-    const {isLeftSidebarOpen} = useLeftSidebar();
+    const {isLeftSidebarOpen, toggleLeftSidebar} = useLeftSidebar();
     const {theme} = useTheme();
     return (
-        <Sidebar direction="left" isOpen={isLeftSidebarOpen} width="w-[180px] sm:w-[212px]">
+        <Sidebar direction="left" isOpen={isLeftSidebarOpen} width="w-[100vw] custom-md:w-[50vw] md:w-[212px]">
             <div className="flex flex-col gap-4 text-sm">
-                <div className="flex items-center gap-2">
-                    <img src={UserData.avatar} alt="user-avatar" className="w-6 h-6 rounded-full" />
-                    <p className="truncate">{UserData.name}</p>
+                <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <img src={UserData.avatar} alt="user-avatar" className="w-6 h-6 rounded-full" />
+                        <p className="truncate">{UserData.name}</p>
+                    </div>
+                    <X size={16} className={`text-black/40 lg:hidden block ${theme === 'dark' ? 'text-white/40' : 'text-black/40'}`} onClick={()=>{toggleLeftSidebar()}} />
                 </div>
 
                 <Tabs />

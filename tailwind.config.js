@@ -10,6 +10,9 @@ module.exports = {
         // You can also define custom font names if needed:
         // inter: ['Inter', 'sans-serif'],
       },
+      screens: {
+        'custom-md': '500px'
+      }
     },
   },
   plugins: [],
