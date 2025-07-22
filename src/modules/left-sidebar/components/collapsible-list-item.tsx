@@ -3,17 +3,29 @@ import { ListType } from "../types/list-type"
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom"
 import { useTheme } from "../../contexts/theme-context"
+import { motion, AnimatePresence } from "framer-motion"
 
-export const SubListItem = ({item, theme}:{item:{id:string; name: string}, theme:string}) => {
+export const SubListItem = ({item, theme, index}:{item:{id:string; name: string}, theme:string, index: number}) => {
     const [hovered, setHovered] = useState(false)
     return(
-        <div className={`flex gap-2 items-center rounded-[8px] py-1 pr-2 w-full ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'} cursor-pointer`}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <motion.div 
+            className={`flex gap-2 items-center rounded-[8px] py-1 pr-2 w-full ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'} cursor-pointer`}  
+            onMouseEnter={() => setHovered(true)} 
+            onMouseLeave={() => setHovered(false)}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ 
+                duration: 0.3, 
+                delay: index * 0.1,
+                ease: "easeOut"
+            }}
+        >
             <div className="flex items-center">
                 <div className={`w-1 h-4 rounded-full ${hovered ? theme === 'dark' ? 'bg-white' : 'bg-black' : 'bg-transparent'}`}></div>
                 <div className="size-4"></div>
             </div>
             <p className="text-sm truncate w-full min-w-0">{item.name}</p>
-        </div>
+        </motion.div>
     )
 }
 
@@ -67,13 +79,22 @@ export const CollapsibleListItem = ({list}:{list:ListType}) => {
                     <p className={`text-sm `}>{list.name}</p>
                 </div>
             </div>
-            {caretOpen && list.subList && (
-                <div className="flex flex-col gap-1 pl-4">
-                    {list.subList?.map((item) => (
-                        <SubListItem key={item.id} item={item} theme={theme} />
-                    ))}
-                </div>
-            )}
+            <AnimatePresence>
+                {caretOpen && list.subList && (
+                    <motion.div 
+                        className="flex flex-col gap-1 pl-4"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        style={{ overflow: "hidden" }}
+                    >
+                        {list.subList?.map((item, index) => (
+                            <SubListItem key={item.id} item={item} theme={theme} index={index} />
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     )
 }
