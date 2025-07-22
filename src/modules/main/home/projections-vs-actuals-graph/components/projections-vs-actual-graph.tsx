@@ -25,6 +25,6 @@ const graphChild = ({theme}:{theme: string}) => (
 export const ProjectionsVsActualsGraph = () => {
     const {theme} = useTheme()
     return (
-        <DataContainer headingChild={headingChild} graphChild={graphChild({theme})} />
+        <DataContainer headingChild={headingChild} graphChild={graphChild({theme})} justifyCenter={true} />
     );
 }

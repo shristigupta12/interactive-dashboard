@@ -18,7 +18,7 @@ export const OverallDetails = () => {
         }
     }, [isLeftSidebarOpen, isRightSidebarOpen])
     return(
-        <div className={`grid grid-cols-1 2xl:grid-cols-2 ${bothSidebarsOpen? "md:grid-cols-1":"md:grid-cols-2"} gap-4 sm:gap-7`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 ${bothSidebarsOpen? "sm:grid-cols-1":"sm:grid-cols-2"} gap-4 sm:gap-7`}>
             {OverallDetailsData?.map((detail) => (
                 <DetailCard
                     key={detail.id}
