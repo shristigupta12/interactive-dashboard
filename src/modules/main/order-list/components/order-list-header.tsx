@@ -96,24 +96,24 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
           <div className='p-1 relative' ref={filterRef}>
             <FunnelSimple 
               size={16} 
-              className={`cursor-pointer ${showFilters || hasActiveFilters ? 'text-blue-500' : ''}`}
+              className={`cursor-pointer ${showFilters || hasActiveFilters ? 'text-[#C6C7F8]' : ''}`}
               onClick={onFilterToggle}
             />
             {/* Active filter indicator */}
             {hasActiveFilters && (
-              <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#C6C7F8] rounded-full"></div>
             )}
             {/* Filter Dropdown */}
             {showFilters && (
-              <div className={`absolute top-full left-0 mt-2 z-50 min-w-48 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
-                <div className="p-4 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              <div className={`absolute top-full left-0 mt-2 z-50 min-w-64 rounded-lg shadow-xl border ${theme === 'dark' ? 'bg-black border-neutral-600' : 'bg-white border-gray-200'}`}>
+                <div className="p-5 space-y-5">
+                  <div className="flex items-center justify-between border-b pb-3">
+                    <h3 className={`text-sm font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                       Filters
                     </h3>
                     <button
                       onClick={onClearFilters}
-                      className={`text-xs px-2 py-1 rounded ${theme === 'dark' ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-700'}`}
+                      className={`text-xs px-3 py-1.5 rounded-md transition-colors ${theme === 'dark' ? 'text-gray-400 hover:text-white hover:bg-black' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}
                     >
                       Clear all
                     </button>
@@ -121,16 +121,16 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
                   
                   {/* Status Filter */}
                   <div>
-                    <label className={`block text-xs font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label className={`block text-sm font-medium mb-2.5 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
                       Status
                     </label>
                     <select
                       value={filters.status}
                       onChange={(e) => onFilterChange('status', e.target.value)}
-                      className={`w-full text-sm rounded border ${theme === 'dark' ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'} px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      className={`w-full text-sm rounded-lg border px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${theme === 'dark' ? 'bg-black border-gray-600 text-white hover:border-gray-500' : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'}`}
                     >
                       {statusOptions.map(option => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.value} value={option.value} className={theme === 'dark' ? 'bg-black' : 'bg-white'}>
                           {option.label}
                         </option>
                       ))}
@@ -139,16 +139,16 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
 
                   {/* Date Filter */}
                   <div>
-                    <label className={`block text-xs font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label className={`block text-sm font-medium mb-2.5 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-700'}`}>
                       Date
                     </label>
                     <select
                       value={filters.date}
                       onChange={(e) => onFilterChange('date', e.target.value)}
-                      className={`w-full text-sm rounded border ${theme === 'dark' ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'} px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      className={`w-full text-sm rounded-lg border px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${theme === 'dark' ? 'bg-black border-gray-600 text-white hover:border-gray-500' : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'}`}
                     >
                       {dateOptions.map(option => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.value} value={option.value} className={theme === 'dark' ? 'bg-black' : 'bg-white'}>
                           {option.label}
                         </option>
                       ))}

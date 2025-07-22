@@ -6,7 +6,7 @@ export const ActivitesItem = ({item}:{item:ActivitiesType}) => {
     const {theme} = useTheme();
     return(
         <motion.div 
-            className="p-1 rounded-[8px] flex gap-2 w-full cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200 ease-in-out"
+            className={`p-1 rounded-[8px] flex gap-2 w-full cursor-pointer transition-all duration-200 ease-in-out ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'}`}
             whileHover={{ 
                 scale: 1.01, 
                 y: -1,

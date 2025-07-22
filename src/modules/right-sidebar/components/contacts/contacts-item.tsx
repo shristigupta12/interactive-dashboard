@@ -1,10 +1,12 @@
 import { ContactsType } from "../../types/contacts-type"
 import { motion } from "framer-motion"
+import { useTheme } from "../../../contexts/theme-context"
 
 export const ContactItem = ({item}:{item:ContactsType}) => {
+    const {theme} = useTheme();
     return(
         <motion.div 
-            className="p-1 rounded-[8px] flex gap-2 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200 ease-in-out"
+            className={`p-1 rounded-[8px] flex gap-2 cursor-pointer transition-all duration-200 ease-in-out ${theme === 'dark' ? 'hover:bg-white/15' : 'hover:bg-neutral-100'}`}
             whileHover={{ 
                 scale: 1.01, 
                 y: -1,
