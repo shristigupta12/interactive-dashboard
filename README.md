@@ -1,17 +1,47 @@
 # Interactive Dashboard
 
-A modern, responsive dashboard built with React, TypeScript, and Tailwind CSS featuring analytics, data visualization, and interactive components.
+A modern, responsive eCommerce analytics dashboard built with React, TypeScript, and Tailwind CSS. This comprehensive dashboard provides real-time insights into sales performance, revenue analytics, and business metrics through interactive visualizations and data tables.
 
 ## 🚀 Features
 
-- **Modern UI/UX**: Clean, responsive design with dark/light theme support
-- **Interactive Components**: Charts, maps, tables, and data visualizations
-- **Client-side Routing**: Smooth navigation with React Router
-- **TypeScript**: Full type safety and better development experience
-- **Tailwind CSS**: Utility-first CSS framework for rapid styling
-- **Framer Motion**: Smooth animations and transitions
-- **Recharts**: Beautiful and customizable charts
-- **Leaflet Maps**: Interactive maps for location-based data
+### 📊 Analytics Dashboard
+- **Overall Details**: Key performance indicators and summary metrics
+- **Revenue Analytics**: Interactive revenue graphs and trend analysis
+- **Projections vs Actuals**: Comparative analysis of projected vs actual performance
+- **Top Selling Products**: Detailed product performance table with sorting and filtering
+- **Sales Distribution**: Pie chart visualization of sales categories
+- **Geographic Revenue**: Interactive map showing revenue by location
+
+### 🛍️ Order Management
+- **Order List**: Comprehensive order management with status tracking
+- **Order Status Badges**: Visual status indicators for different order states
+- **Pagination**: Efficient navigation through large datasets
+- **User Avatars**: Visual representation of order customers
+
+### 🎨 User Interface
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Dark/Light Theme**: Toggle between themes with smooth transitions
+- **Animated Transitions**: Smooth page transitions using Framer Motion
+- **Collapsible Sidebar**: Space-efficient navigation with expandable sections
+- **Interactive Components**: Hover effects and smooth interactions
+
+### 📱 Navigation & Layout
+- **Left Sidebar**: Navigation menu with collapsible sections
+- **Right Sidebar**: Activities, notifications, and contacts
+- **Top Navbar**: Search functionality and user controls
+- **Breadcrumb Navigation**: Clear path indication
+
+## 🛠️ Technology Stack
+
+- **Frontend Framework**: React 19 with TypeScript
+- **Routing**: React Router v6 for client-side navigation
+- **Styling**: Tailwind CSS for utility-first styling
+- **Animations**: Framer Motion for smooth transitions
+- **Charts**: Recharts for data visualization
+- **Maps**: Leaflet with React-Leaflet for geographic data
+- **Tables**: TanStack Table for advanced table functionality
+- **Icons**: Phosphor React for consistent iconography
+- **Build Tool**: Create React App with custom configurations
 
 ## 📦 Installation
 
@@ -27,7 +57,7 @@ npm install
 npm start
 ```
 
-## 🛠️ Development
+## 🚀 Development
 
 ```bash
 # Start development server
@@ -46,111 +76,120 @@ npm run format
 npm run format:check
 ```
 
-## 🚀 Deployment
-
-### Netlify (Recommended)
-
-1. **Connect your repository** to Netlify
-2. **Build settings**:
-   - Build command: `CI=false npm run build`
-   - Publish directory: `build`
-3. **Environment variables**: None required
-4. **Deploy!**
-
-### Manual Deployment
-
-1. **Build the project**:
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy the `build` folder** to your hosting provider
-
-3. **Configure redirects** for client-side routing:
-   ```
-   /*    /index.html   200
-   ```
-
-### Troubleshooting Deployment Issues
-
-#### Common Issues:
-
-1. **"Unexpected token '<'" Error**:
-   - This usually means the server is returning an HTML error page instead of JavaScript
-   - Ensure your hosting provider supports client-side routing
-   - Check that redirects are properly configured
-
-2. **Manifest.json Syntax Error**:
-   - ✅ Fixed: Updated manifest.json with proper JSON syntax
-   - ✅ Fixed: Removed unused imports and variables
-
-3. **Routing Issues**:
-   - ✅ Fixed: Added catch-all route in router configuration
-   - ✅ Fixed: Updated netlify.toml with proper redirects
-   - ✅ Fixed: Added security headers
-
-4. **Build Warnings**:
-   - ✅ Fixed: Removed all unused imports and variables
-   - ✅ Fixed: Clean build with no warnings
-
-#### Deployment Checklist:
-
-- [x] All ESLint warnings resolved
-- [x] Build completes successfully
-- [x] Client-side routing configured
-- [x] Redirects properly set up
-- [x] Manifest.json syntax correct
-- [x] Security headers added
-
 ## 📁 Project Structure
 
 ```
 src/
-├── components/          # Reusable UI components
+├── components/          # Reusable UI components (graphs, tables, inputs)
 ├── modules/            # Feature-based modules
-│   ├── contexts/       # React contexts
-│   ├── left-sidebar/   # Left sidebar components
+│   ├── contexts/       # React contexts (theme, sidebar states)
+│   ├── left-sidebar/   # Navigation sidebar components
 │   ├── main/           # Main content area
-│   ├── navbar/         # Navigation bar
-│   └── right-sidebar/  # Right sidebar components
+│   │   ├── home/       # Dashboard components
+│   │   │   ├── overall-details/      # KPI cards
+│   │   │   ├── revenue-graph/        # Revenue charts
+│   │   │   ├── projections-vs-actuals-graph/  # Comparison charts
+│   │   │   ├── revenue-by-location-map/       # Geographic data
+│   │   │   ├── top-selling-products-table/    # Product analytics
+│   │   │   └── total-sales-pie-chart/        # Sales distribution
+│   │   └── order-list/ # Order management system
+│   ├── navbar/         # Top navigation bar
+│   └── right-sidebar/  # Activities, notifications, contacts
 ├── App.tsx             # Main app component
 └── router.tsx          # Routing configuration
 ```
 
-## 🎨 Customization
+## 🎨 Key Components
 
-### Themes
-The application supports dark and light themes. Theme context is available throughout the app.
+### Dashboard Features
+- **Overall Details**: Displays key metrics in card format
+- **Revenue Graph**: Line chart showing revenue trends over time
+- **Projections vs Actuals**: Stacked bar chart for performance comparison
+- **Revenue by Location**: Interactive map with revenue data
+- **Top Selling Products**: Sortable table with product performance
+- **Sales Pie Chart**: Visual breakdown of sales categories
 
-### Styling
-Built with Tailwind CSS for easy customization. Component styles can be modified in their respective files.
+### Order Management
+- **Order List Table**: Comprehensive order data with filtering
+- **Status Badges**: Color-coded order status indicators
+- **Pagination**: Efficient data navigation
+- **User Avatars**: Customer identification
 
-### Data
-Mock data is located in the `data/` folders within each module. Replace with real API calls as needed.
+### Navigation & UI
+- **Collapsible Sidebar**: Space-efficient navigation
+- **Theme Toggle**: Dark/light mode switching
+- **Responsive Layout**: Mobile-first design approach
+- **Smooth Animations**: Page transitions and interactions
 
-## 🔧 Configuration Files
+## 🔧 Configuration
 
-- `netlify.toml`: Netlify deployment configuration
-- `public/_redirects`: URL redirects for client-side routing
-- `tailwind.config.js`: Tailwind CSS configuration
-- `tsconfig.json`: TypeScript configuration
+### Environment Setup
+- **React 19**: Latest React features and performance improvements
+- **TypeScript**: Full type safety throughout the application
+- **Tailwind CSS**: Utility-first CSS framework
+- **PostCSS**: CSS processing and optimization
 
-## 📝 Scripts
+### Build Configuration
+- **Source Maps**: Disabled for production builds
+- **Code Formatting**: Prettier for consistent code style
+- **Linting**: ESLint for code quality
+- **Testing**: Jest with React Testing Library
 
-- `npm start`: Start development server
-- `npm run build`: Build for production
-- `npm test`: Run tests
-- `npm run format`: Format code with Prettier
-- `./deploy.sh`: Automated deployment script
+## 📊 Data Visualization
+
+The dashboard includes various chart types:
+- **Line Charts**: Revenue trends and time-series data
+- **Bar Charts**: Comparative analysis and projections
+- **Pie Charts**: Sales distribution and category breakdown
+- **Interactive Maps**: Geographic revenue visualization
+- **Data Tables**: Sortable and filterable product/order data
+
+## 🎯 Features in Detail
+
+### Analytics Dashboard
+- Real-time KPI monitoring
+- Revenue trend analysis
+- Performance projections
+- Geographic revenue mapping
+- Product performance tracking
+- Sales category breakdown
+
+### Order Management
+- Comprehensive order listing
+- Status tracking and updates
+- Customer information display
+- Pagination for large datasets
+- Search and filtering capabilities
+
+### User Experience
+- Intuitive navigation
+- Responsive design
+- Smooth animations
+- Theme customization
+- Accessibility considerations
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and formatting
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🚀 Deployment
+
+The application is configured for deployment on various platforms:
+
+- **Netlify**: Configured with `netlify.toml`
+- **Vercel**: Ready for Vercel deployment
+- **Static Hosting**: Build output can be deployed to any static hosting service
+
+### Build Output
+- Optimized production build
+- Static assets for CDN deployment
+- Client-side routing support
+- Responsive design for all devices
