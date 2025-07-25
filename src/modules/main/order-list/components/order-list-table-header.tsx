@@ -17,7 +17,7 @@ export const OrderListTableHeader: React.FC<OrderListTableHeaderProps> = ({
     <thead>
       <tr>
         <th scope="col" className="px-6 py-3 text-left">
-          <div className="flex items-center">
+          <div className="flex items-center cursor-pointer">
             <input
               type="checkbox"
               checked={allSelected}
@@ -25,7 +25,7 @@ export const OrderListTableHeader: React.FC<OrderListTableHeaderProps> = ({
                 if (input) input.indeterminate = someSelected && !allSelected;
               }}
               onChange={(e) => onSelectAll(e.target.checked)}
-              className={`h-4 w-4 text-white border-gray-300 rounded checked:bg-black checked:border-black focus:ring-black focus:ring-offset-0 [&:checked]:bg-black [&:checked]:border-black [&:checked]:text-white ${theme==="dark" && "bg-black border-gray-600"} `}
+              className={`h-4 w-4 text-white border-gray-300 rounded checked:bg-black checked:border-black focus:ring-black focus:ring-offset-0 [&:checked]:bg-black [&:checked]:border-black [&:checked]:text-white ${theme==="dark" && "bg-black border-gray-600 cursor-pointer"} `}
               style={{
                 accentColor: theme === 'dark' ? '#C6C7F8' : 'black'
               }}

@@ -21,8 +21,8 @@ export const RevenueMap = () => {
     return (
       <div className="w-full h-[80px] sm:h-[100px] rounded-xl overflow-hidden">
         <MapContainer
-        center={[20, 0]}
-        zoom={-2}
+        center={[0, 0]}
+        zoom={0}
         scrollWheelZoom={true}
         zoomControl={false}
         style={{ width: "100%", height: "100%", background: "transparent" }}

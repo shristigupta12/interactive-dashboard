@@ -157,7 +157,7 @@ export const OrderList: React.FC = () => {
             <OrderListHeader 
                 searchTerm={searchTerm}
                 onSearchChange={setSearchTerm}
-                onSort={handleSort}
+                onSort={()=>handleSort("date")}
                 sortField={sortField}
                 sortDirection={sortDirection}
                 onFilterToggle={handleFilterToggle}

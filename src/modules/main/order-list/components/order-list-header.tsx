@@ -72,7 +72,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           theme === 'dark' 
             ? 'bg-black border-gray-600 text-white hover:border-gray-500' 
             : 'bg-white border-gray-300 text-gray-900 hover:border-gray-400'
-        } focus:outline-none focus:ring-2 focus:ring-[#C6C7F8]`}
+        } focus:outline-none focus:ring-2 focus:ring-[#black/40]`}
       >
         <span className={selectedOption ? '' : 'text-gray-500'}>
           {selectedOption ? selectedOption.label : placeholder}
@@ -100,14 +100,14 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                   onChange(option.value);
                   setIsOpen(false);
                 }}
-                                 className={`w-full text-left px-3 py-2 text-sm transition-colors ${
+                  className={`w-full text-left px-3 py-2 text-sm transition-colors ${
                    option.value === value
                      ? theme === 'dark' 
-                       ? 'bg-[#C6C7F8] text-white' 
-                       : 'bg-[#C6C7F8]/10 text-[#C6C7F8]'
+                       ? 'bg-white/10 text-white' 
+                       : 'bg-black/5 text-black'
                      : theme === 'dark'
-                       ? 'text-white hover:bg-gray-800'
-                       : 'text-gray-900 hover:bg-gray-100'
+                       ? 'text-white hover:bg-white/10'
+                       : 'text-black hover:bg-black/5'
                  }`}
               >
                 {option.label}
@@ -186,17 +186,17 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
         <div className="flex items-center gap-2 font-semibold">
           <div className='p-1'>
-            <Plus size={16} className='cursor-pointer font-semibold' />
+            <Plus size={16} className='cursor-pointer font-semibold hover:text-[#A8C5DA]' />
           </div>
           <div className='p-1 relative' ref={filterRef}>
             <FunnelSimple 
               size={16} 
-              className={`cursor-pointer ${showFilters || hasActiveFilters ? 'text-[#C6C7F8]' : ''}`}
+              className={`cursor-pointer hover:text-[#A8C5DA] ${showFilters || hasActiveFilters ? 'text-[#A8C5DA]' : ''}`}
               onClick={onFilterToggle}
             />
             {/* Active filter indicator */}
             {hasActiveFilters && (
-              <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#C6C7F8] rounded-full"></div>
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#A8C5DA] rounded-full"></div>
             )}
             {/* Filter Dropdown */}
             {showFilters && (
@@ -208,7 +208,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
                     </h3>
                     <button
                       onClick={onClearFilters}
-                      className={`text-xs px-3 py-1.5 rounded-md transition-colors ${theme === 'dark' ? 'text-gray-400 hover:text-white hover:bg-black' : 'text-gray-500 hover:text-[#C6C7F8] hover:bg-[#C6C7F8]/10'}`}
+                      className={`text-xs px-3 py-1.5 rounded-md transition-colors ${theme === 'dark' ? 'text-gray-400 hover:text-white hover:bg-black' : 'text-gray-500 hover:text-[#black/40] hover:bg-[#black/40]/10'}`}
                     >
                       Clear all
                     </button>
@@ -246,7 +246,7 @@ export const OrderListHeader: React.FC<OrderListHeaderProps> = ({
           <div className='p-1'>
             <ArrowsDownUp 
               size={16} 
-              className={`cursor-pointer ${sortDirection === 'desc' ? 'rotate-180' : ''}`}
+              className={`cursor-pointer hover:text-[#A8C5DA] ${sortDirection === 'desc' ? 'rotate-180' : ''}`}
               onClick={handleSortClick}
             />
           </div>

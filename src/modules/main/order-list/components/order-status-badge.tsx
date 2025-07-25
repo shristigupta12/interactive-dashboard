@@ -54,7 +54,7 @@ export const OrderStatusBadge: React.FC<OrderStatusBadgeProps> = ({ status }) =>
 
   return (
     <div className="flex items-center">
-      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${theme === 'dark' ? OrderStatusColors[status].darkModeTextColor || config.color : config.color}`}>
+      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium ${theme === 'dark' ? OrderStatusColors[status].darkModeTextColor || config.color : config.color}`}>
         <span className={`w-2 h-2 rounded-full mr-2 ${theme === 'dark' ? OrderStatusColors[status].darkModeBgColor || config.dotColor : config.dotColor}`}></span>
         {config.text}
       </span>

@@ -26,7 +26,7 @@ export const OrderListTable: React.FC<OrderListTableProps> = ({
 
   const columns = orderListColumns(theme, selectedRows, onSelectRow, onSelectAll, allSelected, someSelected);
 
-  // Define the getRowClassName function for row styling
+
   const getRowClassName = (row: OrderListTableType, isSelected: boolean, currentTheme: string): string => {
     return isSelected
       ? (currentTheme === 'dark' ? 'bg-white/10' : 'bg-blue-50')
@@ -37,8 +37,8 @@ export const OrderListTable: React.FC<OrderListTableProps> = ({
     <Table
       columns={columns}
       data={data}
-      getRowClassName={getRowClassName} // Pass the row class name function
-      selectedRows={selectedRows} // Pass selected rows to Table for row styling
-    />
+      getRowClassName={getRowClassName} 
+      selectedRows={selectedRows} 
+      />
   );
 };
